@@ -1,0 +1,64 @@
+---
+description: Global development rules
+globs:
+alwaysApply: true
+---
+
+# General
+
+- Use TypeScript with strict typing.
+- Never use `any` unless absolutely necessary.
+- Prefer composition over inheritance.
+- Keep components small and focused.
+- Follow Feature Driven Development.
+
+# React
+
+- Prefer Server Components.
+- Use Client Components only when required.
+- Avoid unnecessary useEffect.
+- Prefer derived state over duplicated state.
+
+# Next.js
+
+- Use App Router.
+- Use Metadata API.
+- Optimize images using next/image.
+- Lazy load when appropriate.
+
+# Styling
+
+- Use Tailwind CSS.
+- Use shadcn/ui components when applicable.
+- Never use inline styles.
+- Use `cn()` helper for conditional classes.
+
+# Accessibility
+
+- Keyboard accessible.
+- Semantic HTML.
+- Proper aria attributes.
+- Sufficient color contrast.
+
+# Performance
+
+- Optimize Core Web Vitals.
+- Avoid unnecessary re-renders.
+- Use dynamic imports when beneficial.
+
+# Code Style
+
+- Keep files readable.
+- Prefer descriptive names.
+- Avoid deeply nested components.
+- Extract reusable logic into hooks or utilities.
+
+# Git
+
+- feat:
+- fix:
+- refactor:
+- docs:
+- style:
+- perf:
+- chore:

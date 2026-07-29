@@ -1,0 +1,106 @@
+import type { Metadata } from "next";
+
+export type SiteConfig = {
+  name: string;
+  title: string;
+  description: string;
+  url: string;
+  email: string;
+  /** Display location on contact surfaces */
+  location: string;
+  /** WhatsApp number in international digits only, e.g. 62812xxxxxxx */
+  whatsapp: string;
+  github: string;
+  linkedin: string;
+  resume: string | null;
+  keywords: string[];
+  techStack: string[];
+};
+
+export const siteConfig: SiteConfig = {
+  name: "Jordy Andreas",
+  title: "Senior Frontend Engineer",
+  description:
+    "I build thoughtful frontend products with strong engineering craft, product mindset, and real-world case studies for recruiters and engineering leaders.",
+  // TODO: replace with confirmed production URL before deployment
+  url: "https://jordyandreas.dev",
+  email: "jordyandreas76@gmail.com",
+  location: "Jakarta, Indonesia",
+  whatsapp: "6285397994422",
+  github: "https://github.com/jordyandreas",
+  linkedin: "https://linkedin.com/in/jordy-andreas",
+  resume: "/resume/jordy-andreas.pdf",
+  keywords: [
+    "Frontend Engineer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "React Native",
+    "Portfolio",
+    "Jordy Andreas",
+  ],
+  techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+};
+
+export const siteTitle = `${siteConfig.name} | ${siteConfig.title}`;
+
+export const siteSocialImage = {
+  alt: `${siteConfig.name} portfolio preview`,
+  width: 1200,
+  height: 630,
+} as const;
+
+export const siteMetadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: siteTitle,
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  keywords: siteConfig.keywords,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteTitle,
+    description: siteConfig.description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteConfig.description,
+  },
+};
+
+export const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      name: siteConfig.name,
+      jobTitle: siteConfig.title,
+      url: siteConfig.url,
+      email: siteConfig.email,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: siteConfig.location,
+      },
+      sameAs: [siteConfig.github, siteConfig.linkedin],
+    },
+    {
+      "@type": "WebSite",
+      name: siteTitle,
+      url: siteConfig.url,
+      description: siteConfig.description,
+    },
+  ],
+} as const;

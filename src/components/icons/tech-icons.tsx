@@ -1,0 +1,156 @@
+import {
+  Accessibility,
+  Boxes,
+  Eye,
+  Gauge,
+  GitPullRequest,
+  KeyRound,
+  Layers,
+  LayoutTemplate,
+  MousePointer2,
+  Network,
+  Palette,
+  Puzzle,
+  Radio,
+  RefreshCw,
+  Smartphone,
+  type LucideIcon,
+} from "lucide-react";
+import StackIcon, { type IconName } from "tech-stack-icons";
+
+import type { CapabilityTechnologyIcon } from "@/data/capabilities";
+import { cn } from "@/lib/utils";
+
+const brandIconNames: Partial<Record<CapabilityTechnologyIcon, IconName>> = {
+  nextjs: "nextjs2",
+  react: "react",
+  reactNative: "reactnative",
+  typescript: "typescript",
+  tanstackQuery: "reactquery",
+  zustand: "zustand",
+  redux: "redux",
+  graphql: "graphql",
+  tailwind: "tailwindcss",
+  shadcn: "shadcnui",
+};
+
+const lucideTechIcons: Partial<
+  Record<CapabilityTechnologyIcon, LucideIcon>
+> = {
+  featureModules: Boxes,
+  renderingStrategy: Layers,
+  codeSplitting: Puzzle,
+  coreWebVitals: Gauge,
+  rest: Network,
+  designCollaboration: Palette,
+  iteration: RefreshCw,
+  codeReview: GitPullRequest,
+  componentLibraries: Boxes,
+  visualHierarchy: Eye,
+  microInteractions: MousePointer2,
+  accessibility: Accessibility,
+  responsiveLayout: LayoutTemplate,
+};
+
+/** Map experience/project technology labels → tech-stack-icons names */
+const technologyLabelToStackIcon: Record<string, IconName> = {
+  "Next.js": "nextjs2",
+  React: "react",
+  "React Native": "reactnative",
+  TypeScript: "typescript",
+  JavaScript: "js",
+  "TanStack Query": "reactquery",
+  Zustand: "zustand",
+  Redux: "redux",
+  GraphQL: "graphql",
+  "Tailwind CSS": "tailwindcss",
+  "ShadCN UI": "shadcnui",
+  Ionic: "ionic",
+  Angular: "angular",
+  RxJS: "rxjs",
+  GitLab: "gitlab",
+  Github: "github",
+  Git: "git",
+  "React Navigation": "reactnavigation",
+  "OAuth 2.0": "oauth",
+  "Framer Motion": "framer",
+};
+
+/** Labels without a brand mark in tech-stack-icons */
+const technologyLabelToLucide: Record<string, LucideIcon> = {
+  "REST API": Network,
+  Axios: Network,
+  JWT: KeyRound,
+  Capacitor: Smartphone,
+  WebSockets: Radio,
+};
+
+type CapabilityTechIconProps = {
+  name: CapabilityTechnologyIcon;
+  className?: string;
+};
+
+export function CapabilityTechIcon({
+  name,
+  className,
+}: CapabilityTechIconProps) {
+  const brandName = brandIconNames[name];
+
+  if (brandName) {
+    return (
+      <StackIcon
+        name={brandName}
+        variant="light"
+        className={cn("size-3.5 shrink-0", className)}
+      />
+    );
+  }
+
+  const Icon = lucideTechIcons[name];
+  if (!Icon) {
+    return null;
+  }
+
+  return (
+    <Icon
+      aria-hidden
+      className={cn("size-3.5 shrink-0", className)}
+      strokeWidth={1.75}
+    />
+  );
+}
+
+type TechnologyLabelIconProps = {
+  label: string;
+  className?: string;
+};
+
+export function TechnologyLabelIcon({
+  label,
+  className,
+}: TechnologyLabelIconProps) {
+  const stackName = technologyLabelToStackIcon[label];
+
+  if (stackName) {
+    return (
+      <StackIcon
+        name={stackName}
+        variant="light"
+        className={cn("size-3.5 shrink-0", className)}
+      />
+    );
+  }
+
+  const LucideFallback = technologyLabelToLucide[label];
+  if (!LucideFallback) {
+    return null;
+  }
+
+  return (
+    <LucideFallback
+      aria-hidden
+      className={cn("size-3.5 shrink-0", className)}
+      strokeWidth={1.75}
+    />
+  );
+}
