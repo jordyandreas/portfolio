@@ -18,11 +18,13 @@ type ShowcaseImage = {
 type ProjectGalleryModalProps = {
   images: ShowcaseImage[];
   title: string;
+  priority?: boolean;
 };
 
 export function ProjectGalleryModal({
   images,
   title,
+  priority = false,
 }: ProjectGalleryModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const coverImage = images[0] ?? null;
@@ -65,6 +67,7 @@ export function ProjectGalleryModal({
             src={coverImage.src}
             alt={coverImage.alt}
             fill
+            priority={priority}
             className={cn(
               projectImageHoverClassName,
               "object-cover object-top transition-transform duration-200 group-hover/preview:scale-[1.02]",
