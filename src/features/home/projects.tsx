@@ -21,7 +21,12 @@ export function Projects() {
           </Reveal>
 
           <Reveal intensity="strong">
-            <ProjectPlatformTabs projects={projects} limit={3} />
+            <ProjectPlatformTabs
+              projects={projects}
+              limit={3}
+              includeAllTab={false}
+              initialTab="web"
+            />
           </Reveal>
 
           <Reveal intensity="strong" className="flex justify-center">

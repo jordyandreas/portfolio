@@ -6,7 +6,7 @@ export function buildWhatsAppHref(
 ): string {
   const digits = phone.replace(/\D/g, "");
   const text = [
-    `Hi Jordy — I'd like to get in touch.`,
+    `Hi Jordy - I'd like to get in touch.`,
     "",
     `Name: ${values.name}`,
     `Email: ${values.email}`,

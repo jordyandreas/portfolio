@@ -6,15 +6,40 @@ import type { Project, ProjectPlatform } from "@/data/projects";
 import { ProjectGrid } from "@/features/projects/project-grid";
 import { cn } from "@/lib/utils";
 
-const PLATFORM_TABS: { id: ProjectPlatform; label: string }[] = [
+type ProjectTab = ProjectPlatform | "all";
+
+const PLATFORM_ORDER: Record<ProjectPlatform, number> = {
+  web: 0,
+  mobile: 1,
+  backend: 2,
+};
+
+const ALL_TAB_ORDER: string[] = [
+  "lxscore-live-sport-website",
+  "miracall-talent-web",
+  "miracall-dashboard-suite",
+  "digica-finance-dashboard",
+  "digica-academy-lms",
+  "namea-company-profile-website",
+  "baby-monitor-dashboard",
+  "ulaman-bali-hotel-website",
+];
+
+const PLATFORM_TABS: { id: ProjectTab; label: string }[] = [
+  { id: "all", label: "All" },
   { id: "web", label: "Web Application" },
   { id: "mobile", label: "Mobile Application" },
+  { id: "backend", label: "Backend" },
 ];
 
 const EMPTY_COPY: Record<
-  ProjectPlatform,
+  ProjectTab,
   { title: string; description: string }
 > = {
+  all: {
+    title: "No projects yet",
+    description: "Selected work will appear here soon.",
+  },
   web: {
     title: "No web projects yet",
     description: "Web application work will appear here soon.",
@@ -23,26 +48,78 @@ const EMPTY_COPY: Record<
     title: "No mobile projects yet",
     description: "Mobile projects will appear here soon.",
   },
+  backend: {
+    title: "No backend projects yet",
+    description: "Backend services will appear here soon.",
+  },
 };
+
+function sortProjects(projects: Project[]): Project[] {
+  return [...projects].sort((projectA, projectB) => {
+    const platformDiff =
+      PLATFORM_ORDER[projectA.platform] - PLATFORM_ORDER[projectB.platform];
+
+    if (platformDiff !== 0) {
+      return platformDiff;
+    }
+
+    return projectA.order - projectB.order;
+  });
+}
+
+function sortAllProjects(projects: Project[]): Project[] {
+  return [...projects].sort((projectA, projectB) => {
+    const indexA = ALL_TAB_ORDER.indexOf(projectA.id);
+    const indexB = ALL_TAB_ORDER.indexOf(projectB.id);
+
+    if (indexA !== -1 || indexB !== -1) {
+      if (indexA === -1) {
+        return 1;
+      }
+
+      if (indexB === -1) {
+        return -1;
+      }
+
+      return indexA - indexB;
+    }
+
+    const platformDiff =
+      PLATFORM_ORDER[projectA.platform] - PLATFORM_ORDER[projectB.platform];
+
+    if (platformDiff !== 0) {
+      return platformDiff;
+    }
+
+    return projectA.order - projectB.order;
+  });
+}
 
 type ProjectPlatformTabsProps = {
   projects: Project[];
   limit?: number;
   className?: string;
+  includeAllTab?: boolean;
+  initialTab?: ProjectTab;
 };
 
 export function ProjectPlatformTabs({
   projects,
   limit,
   className,
+  includeAllTab = true,
+  initialTab = includeAllTab ? "all" : "web",
 }: ProjectPlatformTabsProps) {
-  const [platform, setPlatform] = useState<ProjectPlatform>("web");
+  const [platform, setPlatform] = useState<ProjectTab>(initialTab);
   const tablistId = useId();
   const panelId = `${tablistId}-panel`;
 
-  const filteredProjects = projects
-    .filter((project) => project.platform === platform)
-    .sort((projectA, projectB) => projectA.order - projectB.order);
+  const filteredProjects =
+    platform === "all"
+      ? sortAllProjects(projects)
+      : sortProjects(
+          projects.filter((project) => project.platform === platform),
+        );
   const visibleProjects =
     typeof limit === "number"
       ? filteredProjects.slice(0, limit)
@@ -56,7 +133,7 @@ export function ProjectPlatformTabs({
         aria-label="Project platform"
         className="flex flex-wrap justify-center gap-3"
       >
-        {PLATFORM_TABS.map((tab) => {
+        {PLATFORM_TABS.filter((tab) => includeAllTab || tab.id !== "all").map((tab) => {
           const isSelected = platform === tab.id;
 
           return (

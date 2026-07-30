@@ -21,7 +21,14 @@ export type CapabilityTechnologyIcon =
   | "visualHierarchy"
   | "microInteractions"
   | "accessibility"
-  | "responsiveLayout";
+  | "responsiveLayout"
+  | "expo"
+  | "supabase"
+  | "firebase"
+  | "zod"
+  | "reactHookForm"
+  | "ionic"
+  | "angular";
 
 export type CapabilityTechnology = {
   name: string;
@@ -41,14 +48,14 @@ export type CapabilitiesContent = {
 };
 
 export const capabilitiesContent: CapabilitiesContent = {
-  heading: "Capabilities",
+  heading: "Core Strengths",
   description:
-    "Engineering strengths applied across product work, with technologies as supporting evidence rather than the headline.",
+    "Proven product engineering strengths drawn from the web, mobile, and realtime systems I have shipped across recent experience and portfolio work.",
   groups: [
     {
-      title: "Frontend Architecture",
+      title: "Frontend Platforms",
       description:
-        "Structuring modular, maintainable interface systems that scale with product complexity.",
+        "Building maintainable product interfaces across modern web stacks, from marketing surfaces to complex dashboard and app experiences.",
       technologies: [
         { name: "Next.js", icon: "nextjs" },
         { name: "React", icon: "react" },
@@ -57,19 +64,9 @@ export const capabilitiesContent: CapabilitiesContent = {
       ],
     },
     {
-      title: "Performance & UX",
+      title: "State, Data & APIs",
       description:
-        "Improving load behavior, interaction quality, and perceived speed without sacrificing clarity.",
-      technologies: [
-        { name: "Rendering strategy", icon: "renderingStrategy" },
-        { name: "Code splitting", icon: "codeSplitting" },
-        { name: "Core Web Vitals", icon: "coreWebVitals" },
-      ],
-    },
-    {
-      title: "State & Data",
-      description:
-        "Handling client state, server data, and async flows with predictable patterns.",
+        "Managing server data, client state, and API-heavy workflows with patterns that stay predictable as products grow.",
       technologies: [
         { name: "TanStack Query", icon: "tanstackQuery" },
         { name: "Zustand", icon: "zustand" },
@@ -79,49 +76,70 @@ export const capabilitiesContent: CapabilitiesContent = {
       ],
     },
     {
-      title: "Product Delivery",
+      title: "Forms, Validation & Auth",
       description:
-        "Turning product and design intent into shippable interfaces with clear trade-offs.",
+        "Shipping product flows that need reliable input handling, validation, and protected access across dashboards and account experiences.",
       technologies: [
-        { name: "Design collaboration", icon: "designCollaboration" },
-        { name: "Iteration", icon: "iteration" },
-        { name: "Code review", icon: "codeReview" },
+        { name: "React Hook Form", icon: "reactHookForm" },
+        { name: "Zod", icon: "zod" },
+        { name: "ShadCN UI", icon: "shadcn" },
+        { name: "Accessibility", icon: "accessibility" },
       ],
     },
     {
-      title: "Interface Systems",
+      title: "Realtime & Backend Integration",
       description:
-        "Building reusable UI foundations that keep product surfaces consistent and fast to extend.",
+        "Connecting interfaces to live product systems, from realtime media/chat experiences to backend-integrated operational dashboards.",
       technologies: [
-        { name: "ShadCN UI", icon: "shadcn" },
+        { name: "Firebase", icon: "firebase" },
+        { name: "Supabase", icon: "supabase" },
+        { name: "Rendering strategy", icon: "renderingStrategy" },
+        { name: "Core Web Vitals", icon: "coreWebVitals" },
+      ],
+    },
+    {
+      title: "Mobile Delivery",
+      description:
+        "Delivering cross-platform product experiences across React Native, Expo, and earlier hybrid-mobile stacks.",
+      technologies: [
+        { name: "React Native", icon: "reactNative" },
+        { name: "Expo", icon: "expo" },
+        { name: "Ionic", icon: "ionic" },
+        { name: "Angular", icon: "angular" },
+      ],
+    },
+    {
+      title: "Interface Quality",
+      description:
+        "Keeping shipped interfaces performant, consistent, and pleasant to use through reusable systems and careful product polish.",
+      technologies: [
         { name: "Tailwind CSS", icon: "tailwind" },
         { name: "Component libraries", icon: "componentLibraries" },
-      ],
-    },
-    {
-      title: "UI Craft",
-      description:
-        "Obsessing over the details that make interfaces feel clear, considered, and good to use.",
-      technologies: [
         { name: "Visual hierarchy", icon: "visualHierarchy" },
         { name: "Micro-interactions", icon: "microInteractions" },
-        { name: "Accessibility", icon: "accessibility" },
         { name: "Responsive layout", icon: "responsiveLayout" },
       ],
     },
   ],
 };
 
-/** Flat tool list for /about "What I build with" — keep in sync with brand tools above. */
+/** Flat tool list for /about "What I build with" - keep in sync with brand tools above. */
 export const featuredTechStack: CapabilityTechnology[] = [
   { name: "Next.js", icon: "nextjs" },
   { name: "React", icon: "react" },
   { name: "TypeScript", icon: "typescript" },
-  { name: "React Native", icon: "reactNative" },
-  { name: "TanStack Query", icon: "tanstackQuery" },
-  { name: "Zustand", icon: "zustand" },
-  { name: "Redux", icon: "redux" },
-  { name: "GraphQL", icon: "graphql" },
   { name: "Tailwind CSS", icon: "tailwind" },
   { name: "ShadCN UI", icon: "shadcn" },
+  { name: "TanStack Query", icon: "tanstackQuery" },
+  { name: "Zustand", icon: "zustand" },
+  { name: "React Hook Form", icon: "reactHookForm" },
+  { name: "Zod", icon: "zod" },
+  { name: "Firebase", icon: "firebase" },
+  { name: "React Native", icon: "reactNative" },
+  { name: "Redux", icon: "redux" },
+  { name: "GraphQL", icon: "graphql" },
+  { name: "Supabase", icon: "supabase" },
+  { name: "Expo", icon: "expo" },
+  { name: "Ionic", icon: "ionic" },
+  { name: "Angular", icon: "angular" },
 ];

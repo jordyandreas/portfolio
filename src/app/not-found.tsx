@@ -33,21 +33,18 @@ export default function NotFound() {
           </div>
 
           <p className="mt-4 max-w-lg text-base leading-8 text-muted-foreground sm:text-lg">
-            This page doesn’t exist — or it moved. Use the navigation above to
+            This page doesn’t exist - or it moved. Use the navigation above to
             get back to work that’s still here.
           </p>
 
-          <div
-            aria-hidden="true"
-            className="mt-10 flex items-center gap-2"
-          >
+          <div aria-hidden="true" className="mt-10 flex items-center gap-2">
             <span className="size-1.5 rounded-full bg-border" />
             <span className="size-1.5 rounded-full bg-border" />
             <span className="size-1.5 rounded-full bg-border" />
           </div>
 
           <p className="mt-6 text-sm text-muted-foreground/80">
-            No stress — home is one click away.
+            No stress - home is one click away.
           </p>
         </Reveal>
       </Container>

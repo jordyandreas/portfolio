@@ -1,16 +1,15 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
-import { Images, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import StackIcon from "tech-stack-icons";
 
 import { TechnologyLabelIcon } from "@/components/icons/tech-icons";
+import { surfaceLiftClassName } from "@/components/motion/interaction";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  projectImageHoverClassName,
-  surfaceLiftClassName,
-} from "@/components/motion/interaction";
 import type { Project } from "@/data/projects";
+import { ProjectGalleryModal } from "@/features/projects/project-gallery-modal";
 import { cn } from "@/lib/utils";
 
 const VISIBLE_TECH_COUNT = 3;
@@ -31,27 +30,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         surfaceLiftClassName,
       )}
     >
-      <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-background/40">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={project.imageAlt}
-            fill
-            className={cn(
-              projectImageHoverClassName,
-              "group-hover:scale-[1.02] group-hover:brightness-105",
-            )}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        ) : (
-          <div
-            aria-hidden="true"
-            className="flex h-full min-h-[10rem] w-full items-center justify-center text-muted-foreground/50"
-          >
-            <Images className="size-10" strokeWidth={1.5} />
-          </div>
-        )}
-      </div>
+      <ProjectGalleryModal
+        images={project.showcaseImages}
+        title={project.title}
+      />
 
       <div className="flex flex-1 flex-col gap-4">
         <div className="space-y-2">
