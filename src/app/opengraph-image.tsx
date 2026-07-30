@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import {
+  getProfileImageDataUrl,
   socialImageContentType,
   socialImageSize,
   renderSocialImage,
@@ -11,8 +12,10 @@ export const alt = siteSocialImage.alt;
 export const size = socialImageSize;
 export const contentType = socialImageContentType;
 
-export default function OpenGraphImage() {
-  return new ImageResponse(renderSocialImage(), {
+export default async function OpenGraphImage() {
+  const profileImageSrc = await getProfileImageDataUrl();
+
+  return new ImageResponse(renderSocialImage({ profileImageSrc }), {
     ...size,
   });
 }
