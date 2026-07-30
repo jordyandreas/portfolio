@@ -7,6 +7,8 @@ type ProjectGridProps = {
   className?: string;
 };
 
+const ABOVE_FOLD_IMAGE_COUNT = 3;
+
 export function ProjectGrid({ projects, className }: ProjectGridProps) {
   return (
     <ul
@@ -15,9 +17,12 @@ export function ProjectGrid({ projects, className }: ProjectGridProps) {
         className,
       )}
     >
-      {projects.map((project) => (
+      {projects.map((project, index) => (
         <li key={project.id} className="h-full">
-          <ProjectCard project={project} />
+          <ProjectCard
+            project={project}
+            priority={index < ABOVE_FOLD_IMAGE_COUNT}
+          />
         </li>
       ))}
     </ul>

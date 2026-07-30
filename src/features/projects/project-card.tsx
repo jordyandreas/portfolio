@@ -16,9 +16,10 @@ const VISIBLE_TECH_COUNT = 3;
 
 type ProjectCardProps = {
   project: Project;
+  priority?: boolean;
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const visibleTechnologies = project.technologies.slice(0, VISIBLE_TECH_COUNT);
   const remainingTechnologyCount =
     project.technologies.length - visibleTechnologies.length;
@@ -33,6 +34,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <ProjectGalleryModal
         images={project.showcaseImages}
         title={project.title}
+        priority={priority}
       />
 
       <div className="flex flex-1 flex-col gap-4">
