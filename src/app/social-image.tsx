@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
 import { siteConfig, siteSocialImage, siteTitle } from "@/config/site";
 
 export const socialImageSize = {
@@ -7,7 +10,21 @@ export const socialImageSize = {
 
 export const socialImageContentType = "image/png";
 
-export function renderSocialImage() {
+export async function getProfileImageDataUrl() {
+  const profileImageBuffer = await readFile(
+    join(process.cwd(), "public/profile/jordy-andreas.png"),
+  );
+
+  return Uint8Array.from(profileImageBuffer).buffer;
+}
+
+type RenderSocialImageProps = {
+  profileImageSrc: ArrayBuffer;
+};
+
+export function renderSocialImage({
+  profileImageSrc,
+}: RenderSocialImageProps) {
   return (
     <div
       style={{
@@ -25,6 +42,8 @@ export function renderSocialImage() {
           display: "flex",
           width: "100%",
           height: "100%",
+          justifyContent: "space-between",
+          gap: "40px",
           border: "1px solid rgba(255,255,255,0.12)",
           borderRadius: "32px",
           padding: "56px",
@@ -36,7 +55,7 @@ export function renderSocialImage() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            width: "100%",
+            flex: 1,
             height: "100%",
           }}
         >
@@ -62,7 +81,7 @@ export function renderSocialImage() {
             <div
               style={{
                 display: "flex",
-                fontSize: 66,
+                fontSize: 62,
                 lineHeight: 1.05,
                 fontWeight: 700,
                 letterSpacing: "-0.04em",
@@ -73,7 +92,7 @@ export function renderSocialImage() {
             <div
               style={{
                 display: "flex",
-                fontSize: 28,
+                fontSize: 26,
                 lineHeight: 1.45,
                 color: "rgba(255,255,255,0.82)",
               }}
@@ -94,6 +113,41 @@ export function renderSocialImage() {
           >
             <div style={{ display: "flex" }}>{siteConfig.email}</div>
             <div style={{ display: "flex" }}>{siteConfig.url.replace(/^https?:\/\//, "")}</div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexShrink: 0,
+            width: "280px",
+            height: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              borderRadius: "28px",
+              overflow: "hidden",
+              border: "1px solid rgba(255,255,255,0.14)",
+              background: "rgba(255,255,255,0.06)",
+            }}
+          >
+            <img
+              src={profileImageSrc as unknown as string}
+              alt={siteConfig.name}
+              width="280"
+              height="406"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center top",
+              }}
+            />
           </div>
         </div>
       </div>

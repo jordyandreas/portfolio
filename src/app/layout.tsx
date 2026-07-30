@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Geist_Mono, Inter } from "next/font/google";
 
 import { AppLayout } from "@/components/layout/app-layout";
@@ -34,6 +35,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         <AppLayout>{children}</AppLayout>
+        <Analytics />
       </body>
     </html>
   );
