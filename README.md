@@ -1,13 +1,13 @@
-# Jordy Andreas — Portfolio
+# Jordy Andreas - Portfolio
 
 Personal portfolio for **Jordy Andreas**, Senior Frontend Engineer.
 
-Built to show how I think about product interfaces — clarity, scalability, and performance — through real project work, experience, and engineering principles. Aimed at recruiters, engineering leaders, and founders reviewing frontend craft.
+Built to show how I think about product interfaces - clarity, scalability, and performance - through real project work, experience, and engineering principles. Aimed at recruiters, engineering leaders, and founders reviewing frontend craft.
 
 ## What’s included
 
-- **Home** — hero, selected projects, experience, principles, capabilities, and contact
-- **Projects** — web and mobile case studies with role, outcomes, and tech
+- **Home** - hero, selected projects, experience, principles, capabilities, and contact
+- **Projects** - web and mobile case studies with role, outcomes, and tech
 - Data-driven content (`src/data`) so copy and case studies stay easy to update
 - Motion and interaction polish with reduced-motion support
 
@@ -28,12 +28,12 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-| Script | Description |
-|--------|-------------|
-| `pnpm dev` | Dev server (Turbopack) |
-| `pnpm build` | Production build |
-| `pnpm start` | Production server |
-| `pnpm lint` | ESLint |
+| Script       | Description            |
+| ------------ | ---------------------- |
+| `pnpm dev`   | Dev server (Turbopack) |
+| `pnpm build` | Production build       |
+| `pnpm start` | Production server      |
+| `pnpm lint`  | ESLint                 |
 
 ## Contact
 

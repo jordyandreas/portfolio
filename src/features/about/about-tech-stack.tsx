@@ -22,12 +22,12 @@ export function AboutTechStack() {
             </h2>
           </Reveal>
 
-          <StaggerGroup className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          <StaggerGroup className="grid auto-cols-[minmax(6.5rem,1fr)] grid-flow-col grid-rows-2 gap-3 overflow-x-auto pb-1 sm:auto-cols-[minmax(7.5rem,1fr)]">
             {techStack.map((technology) => (
               <StaggerItem key={technology.name}>
                 <div
                   className={cn(
-                    "flex h-full flex-col items-center gap-3 rounded-2xl border border-border bg-surface/80 px-3 py-5 text-center",
+                    "flex h-full min-w-[6.5rem] flex-col items-center gap-3 rounded-2xl border border-border bg-surface/80 px-3 py-5 text-center sm:min-w-[7.5rem]",
                     surfaceQuietClassName,
                   )}
                 >

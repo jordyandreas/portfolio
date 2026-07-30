@@ -43,8 +43,8 @@ export const aboutContent: AboutContent = {
   ],
   stats: [
     { value: "6+", label: "Years of experience" },
-    { value: "24+", label: "Completed projects" },
-    { value: "12+", label: "Clients worldwide" },
+    { value: "12+", label: "Completed projects" },
+    { value: "5+", label: "Clients worldwide" },
   ],
   expertiseHeading: "Expertise",
   expertise: [
@@ -70,7 +70,7 @@ export const aboutContent: AboutContent = {
 export const aboutPageContent: AboutPageContent = {
   heading: "Jordy Andreas",
   paragraphs: [
-    "I turn complex product requirements into clear, performant interfaces people can rely on. Whether it's shaping web platforms, shipping mobile experiences, or tightening systems under real traffic—I bring structure to the craft.",
+    "I turn complex product requirements into clear, performant interfaces people can rely on. Whether it's shaping web platforms, shipping mobile experiences, or tightening systems under real traffic-I bring structure to the craft.",
     "Based in Jakarta, I care about maintainable frontend architecture, thoughtful collaboration, and work that still holds up long after launch.",
   ],
   techStackHeading: "What I build with",

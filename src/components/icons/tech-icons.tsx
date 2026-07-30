@@ -1,19 +1,31 @@
 import {
   Accessibility,
+  BadgeCheck,
   Boxes,
+  CreditCard,
+  Database,
   Eye,
+  FileInput,
+  FlaskConical,
   Gauge,
   GitPullRequest,
+  HardDrive,
   KeyRound,
   Layers,
   LayoutTemplate,
+  MessageSquare,
   MousePointer2,
   Network,
   Palette,
+  Play,
   Puzzle,
   Radio,
   RefreshCw,
+  Server,
+  Share2,
+  ShieldCheck,
   Smartphone,
+  Video,
   type LucideIcon,
 } from "lucide-react";
 import StackIcon, { type IconName } from "tech-stack-icons";
@@ -32,6 +44,12 @@ const brandIconNames: Partial<Record<CapabilityTechnologyIcon, IconName>> = {
   graphql: "graphql",
   tailwind: "tailwindcss",
   shadcn: "shadcnui",
+  expo: "expo",
+  supabase: "supabase",
+  firebase: "firebase",
+  zod: "zod",
+  ionic: "ionic",
+  angular: "angular",
 };
 
 const lucideTechIcons: Partial<
@@ -50,6 +68,7 @@ const lucideTechIcons: Partial<
   microInteractions: MousePointer2,
   accessibility: Accessibility,
   responsiveLayout: LayoutTemplate,
+  reactHookForm: FileInput,
 };
 
 /** Map experience/project technology labels → tech-stack-icons names */
@@ -65,6 +84,7 @@ const technologyLabelToStackIcon: Record<string, IconName> = {
   GraphQL: "graphql",
   "Tailwind CSS": "tailwindcss",
   "ShadCN UI": "shadcnui",
+  "shadcn/ui": "shadcnui",
   Ionic: "ionic",
   Angular: "angular",
   RxJS: "rxjs",
@@ -74,6 +94,17 @@ const technologyLabelToStackIcon: Record<string, IconName> = {
   "React Navigation": "reactnavigation",
   "OAuth 2.0": "oauth",
   "Framer Motion": "framer",
+  Expo: "expo",
+  "Node.js": "nodejs",
+  "Express.js": "expressjs",
+  Go: "go",
+  Supabase: "supabase",
+  Firebase: "firebase",
+  MUI: "materialui",
+  Zod: "zod",
+  Jest: "jest",
+  Turborepo: "turborepo",
+  "Radix UI": "radixui",
 };
 
 /** Labels without a brand mark in tech-stack-icons */
@@ -83,6 +114,19 @@ const technologyLabelToLucide: Record<string, LucideIcon> = {
   JWT: KeyRound,
   Capacitor: Smartphone,
   WebSockets: Radio,
+  WebSocket: Radio,
+  Gin: Server,
+  LowDB: Database,
+  "React Hook Form": FileInput,
+  NextAuth: ShieldCheck,
+  "Agora RTC": Video,
+  "Agora Chat": MessageSquare,
+  Joi: BadgeCheck,
+  AsyncStorage: HardDrive,
+  "React Context": Share2,
+  "Payment Gateway": CreditCard,
+  Supertest: FlaskConical,
+  Lottie: Play,
 };
 
 type CapabilityTechIconProps = {
