@@ -6,13 +6,21 @@ import StackIcon from "tech-stack-icons";
 
 import { TechnologyLabelIcon } from "@/components/icons/tech-icons";
 import { surfaceLiftClassName } from "@/components/motion/interaction";
-import { Badge } from "@/components/ui/badge";
+import { Badge, badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import type { Project } from "@/data/projects";
 import { ProjectGalleryModal } from "@/features/projects/project-gallery-modal";
 import { cn } from "@/lib/utils";
 
 const VISIBLE_TECH_COUNT = 3;
+
+const techBadgeClassName =
+  "h-7 gap-1.5 border-border bg-background/60 text-muted-foreground";
 
 type ProjectCardProps = {
   project: Project;
@@ -21,8 +29,8 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const visibleTechnologies = project.technologies.slice(0, VISIBLE_TECH_COUNT);
-  const remainingTechnologyCount =
-    project.technologies.length - visibleTechnologies.length;
+  const remainingTechnologies = project.technologies.slice(VISIBLE_TECH_COUNT);
+  const remainingTechnologyCount = remainingTechnologies.length;
 
   return (
     <article
@@ -50,10 +58,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
         <ul className="flex flex-wrap items-center gap-2">
           {visibleTechnologies.map((technology) => (
             <li key={technology} className="flex">
-              <Badge
-                variant="outline"
-                className="h-7 gap-1.5 border-border bg-background/60 text-muted-foreground"
-              >
+              <Badge variant="outline" className={techBadgeClassName}>
                 <TechnologyLabelIcon label={technology} />
                 {technology}
               </Badge>
@@ -61,12 +66,42 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
           ))}
           {remainingTechnologyCount > 0 ? (
             <li className="flex">
-              <Badge
-                variant="outline"
-                className="h-7 border-border bg-background/60 text-muted-foreground"
-              >
-                +{remainingTechnologyCount}
-              </Badge>
+              <HoverCard>
+                <HoverCardTrigger
+                  delay={200}
+                  closeDelay={100}
+                  render={
+                    <button
+                      type="button"
+                      className={cn(
+                        badgeVariants({ variant: "outline" }),
+                        "h-7 cursor-default border-border bg-background/60 text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                      )}
+                      aria-label={`${remainingTechnologyCount} more technologies`}
+                    />
+                  }
+                >
+                  +{remainingTechnologyCount}
+                </HoverCardTrigger>
+                <HoverCardContent
+                  align="start"
+                  className="w-auto max-w-72 space-y-2 p-3"
+                >
+                  <p className="text-xs font-medium text-muted-foreground">
+                    Also used
+                  </p>
+                  <ul className="flex flex-wrap items-center gap-2">
+                    {remainingTechnologies.map((technology) => (
+                      <li key={technology} className="flex">
+                        <Badge variant="outline" className={techBadgeClassName}>
+                          <TechnologyLabelIcon label={technology} />
+                          {technology}
+                        </Badge>
+                      </li>
+                    ))}
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
             </li>
           ) : null}
         </ul>
