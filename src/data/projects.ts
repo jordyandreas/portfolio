@@ -111,7 +111,7 @@ export const projects: Project[] = [
         alt: "Titantaiment - Short Video Streaming Platform showcase screenshot 1",
       },
     ],
-    order: 9,
+    order: 10,
   },
   {
     id: "digica-academy-lms",
@@ -221,7 +221,7 @@ export const projects: Project[] = [
         alt: "Ulaman Bali Hotel Website showcase screenshot 3",
       },
     ],
-    order: 8,
+    order: 9,
   },
   {
     id: "digica-finance-dashboard",
@@ -494,6 +494,65 @@ export const projects: Project[] = [
       },
     ],
     order: 7,
+  },
+  {
+    id: "personal-portfolio-website",
+    slug: "personal-portfolio-website",
+    title: "Personal Portfolio Website",
+    shortDescription:
+      "A personal portfolio showcasing frontend work, experience, and engineering craft with clear structure, data-driven content, and polished motion.",
+    overview:
+      "Built a personal portfolio to showcase frontend work, experience, and engineering principles - with clear information architecture, reusable data-driven content, and polished motion.",
+    domain: "Personal Brand / Marketing Site",
+    role: "Frontend Engineer - end-to-end portfolio product delivery",
+    context:
+      "Needed a polished personal site to present case studies, experience, and contact paths to recruiters and engineering leaders.",
+    challenge:
+      "Keep project storytelling clear and maintainable while shipping polished motion, accessibility, and a reliable contact experience.",
+    contribution:
+      "Designed and built the multi-page portfolio with typed data-driven content, motion with reduced-motion support, and a validated contact form.",
+    outcomes: [
+      "Delivered a multi-page portfolio with home, projects, about, and contact flows.",
+      "Structured content as typed data for easy project and experience updates.",
+      "Shipped polished motion with reduced-motion support and a validated contact form.",
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Framer Motion",
+      "React Hook Form",
+      "Zod",
+    ],
+    highlights: [
+      "Built a personal portfolio for project case studies, experience, and contact flows.",
+      "Used typed data-driven content to keep projects and experience easy to update.",
+      "Added motion with reduced-motion support and a validated contact form.",
+    ],
+    githubUrl: "https://github.com/jordyandreas/portfolio",
+    liveUrl: "https://jordyandreas-dev.vercel.app",
+    status: "completed",
+    platform: "web",
+    showcaseImages: [
+      {
+        src: "/projects/personal-portfolio-website/01-cover.png",
+        alt: "Personal Portfolio Website showcase screenshot 1",
+      },
+      {
+        src: "/projects/personal-portfolio-website/02-showcase.png",
+        alt: "Personal Portfolio Website showcase screenshot 2",
+      },
+      {
+        src: "/projects/personal-portfolio-website/03-showcase.png",
+        alt: "Personal Portfolio Website showcase screenshot 3",
+      },
+      {
+        src: "/projects/personal-portfolio-website/04-showcase.png",
+        alt: "Personal Portfolio Website showcase screenshot 4",
+      },
+    ],
+    order: 8,
   },
   {
     id: "namea-company-profile-website",

@@ -22,6 +22,7 @@ const ALL_TAB_ORDER: string[] = [
   "digica-academy-lms",
   "namea-company-profile-website",
   "baby-monitor-dashboard",
+  "personal-portfolio-website",
   "ulaman-bali-hotel-website",
 ];
 
