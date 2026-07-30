@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Images, X } from "lucide-react";
 import { createPortal } from "react-dom";
 
 import { focusRingClassName, projectImageHoverClassName } from "@/components/motion/interaction";
 import { Button } from "@/components/ui/button";
+import { ProjectImage } from "@/features/projects/project-image";
 import { ProjectShowcaseCarousel } from "@/features/projects/project-showcase-carousel";
 import { cn } from "@/lib/utils";
 
@@ -63,10 +63,9 @@ export function ProjectGalleryModal({
             focusRingClassName,
           )}
         >
-          <Image
+          <ProjectImage
             src={coverImage.src}
             alt={coverImage.alt}
-            fill
             priority={priority}
             className={cn(
               projectImageHoverClassName,

@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { ChevronLeft, ChevronRight, Images } from "lucide-react";
 
 import { projectImageHoverClassName } from "@/components/motion/interaction";
+import { ProjectImage } from "@/features/projects/project-image";
 import { cn } from "@/lib/utils";
 
 type ShowcaseImage = {
@@ -52,11 +52,10 @@ export function ProjectShowcaseCarousel({
     <div className="group relative aspect-video overflow-hidden rounded-2xl border border-border bg-background/40">
       {activeImage ? (
         <>
-          <Image
+          <ProjectImage
             key={activeImage.src}
             src={activeImage.src}
             alt={activeImage.alt}
-            fill
             className={cn(
               projectImageHoverClassName,
               "object-contain p-2 group-hover:scale-[1.01]",
