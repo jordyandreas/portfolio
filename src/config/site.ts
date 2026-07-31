@@ -29,7 +29,7 @@ export const siteConfig: SiteConfig = {
   whatsapp: "6285397994422",
   github: "https://github.com/jordyandreas",
   linkedin: "https://linkedin.com/in/jordy-andreas",
-  resume: "/resume/jordy-andreas.pdf",
+  resume: "/resume/Jordy_Andreas_Senior_Frontend_Engineer.pdf",
   keywords: [
     "Frontend Engineer",
     "React",

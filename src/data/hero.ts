@@ -29,7 +29,7 @@ export const heroContent: HeroContent = {
   },
   secondaryCta: {
     label: "My Resume",
-    href: siteConfig.resume ?? "/resume/jordy-andreas.pdf",
+    href: siteConfig.resume ?? "/resume/Jordy_Andreas_Senior_Frontend_Engineer.pdf",
     external: true,
   },
   portrait: {
