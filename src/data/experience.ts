@@ -21,10 +21,10 @@ export const experienceContent: ExperienceContent = {
       period: "August 2023 – Present",
       location: "Jakarta, Indonesia",
       outcomes: [
-        "Led frontend delivery product lines with 2 engineers - covering live sports (LXScore), short-video streaming (Titantaiment), Miracall video-call systems, and internal ops dashboards on web and mobile.",
+        "Led frontend delivery across product lines with 2 engineers - covering live sports, short-video streaming, video-call systems, and internal ops dashboards on web and mobile.",
         "Improved page load performance by up to 60% by optimizing reusable web and mobile components and scalable UI patterns.",
-        "Established modular frontend architecture across products, including a Turborepo setup with shared UI and auth for Miracall’s Admin, Agency, and Referral dashboards.",
-        "Built realtime Miracall experiences for talent/host and caller flows using Agora RTC/Chat, WebSocket signaling, and Firebase - from KYC onboarding through live sessions, chat, and earnings/withdrawals.",
+        "Established modular frontend architecture across products, including a Turborepo setup with shared UI and auth for Admin, Agency, and Referral dashboards.",
+        "Built realtime experiences for talent/host and caller flows using Agora RTC/Chat, WebSocket signaling, and Firebase - from KYC onboarding through live sessions, chat, and earnings/withdrawals.",
         "Mentored 2 junior engineers through code reviews and shared standards, raising code quality and keeping frontend delivery aligned across projects.",
         "Partnered with design and backend to keep UX and performance standards consistent across Namea’s web and mobile surfaces.",
       ],

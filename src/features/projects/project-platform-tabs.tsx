@@ -15,16 +15,17 @@ const PLATFORM_ORDER: Record<ProjectPlatform, number> = {
 };
 
 const ALL_TAB_ORDER: string[] = [
-  "miracall-talent-web",
-  "miracall-dashboard-suite",
+  "1on1-video-call-website",
+  "video-call-dashboard-suite",
   "namea-company-profile-website",
-  "lxscore-live-sport-website",
+  "masjidqu",
+  "live-sport-website",
   "digica-finance-dashboard",
   "digica-academy-lms",
   "baby-monitor-dashboard",
   "personal-portfolio-website",
   "ulaman-bali-hotel-website",
-  "titantaiment-short-video-platform",
+  "short-video-streaming-platform",
   "video-call-apps",
   "master-owner-app",
   "master-owner-api",
@@ -174,7 +175,10 @@ export function ProjectPlatformTabs({
         aria-labelledby={`${tablistId}-${platform}`}
       >
         {visibleProjects.length > 0 ? (
-          <ProjectGrid projects={visibleProjects} />
+          <ProjectGrid
+            projects={visibleProjects}
+            showPlatformBadge={platform === "all"}
+          />
         ) : (
           <div className="rounded-3xl border border-dashed border-border bg-surface/60 px-6 py-16 text-center sm:px-8">
             <p className="text-lg font-semibold tracking-tight text-foreground">

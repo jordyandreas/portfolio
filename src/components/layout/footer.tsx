@@ -2,6 +2,7 @@ import { Mail } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { focusRingClassName } from "@/components/motion/interaction";
+import { lastUpdated as lastUpdatedIso } from "@/config/last-updated";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -52,8 +53,18 @@ const socialLinks = [
   },
 ] as const;
 
+function formatLastUpdated(isoDate: string): string {
+  const date = new Date(`${isoDate}T00:00:00`);
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
 export function Footer() {
   const year = new Date().getFullYear();
+  const lastUpdated = formatLastUpdated(lastUpdatedIso);
 
   return (
     <footer className="border-t border-border">
@@ -64,6 +75,9 @@ export function Footer() {
           </p>
           <p className="text-sm text-muted-foreground">
             All rights reserved &copy; {year}.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Last updated {lastUpdated}
           </p>
           <ul className="mt-2 flex items-center gap-3">
             {socialLinks.map((link) => {
