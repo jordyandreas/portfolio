@@ -14,7 +14,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import type { Project } from "@/data/projects";
-import { ProjectGalleryModal } from "@/features/projects/project-gallery-modal";
+import { ProjectDetailModal } from "@/features/projects/project-detail-modal";
 import { cn } from "@/lib/utils";
 
 const VISIBLE_TECH_COUNT = 3;
@@ -44,10 +44,8 @@ export function ProjectCard({
         surfaceLiftClassName,
       )}
     >
-      <ProjectGalleryModal
-        images={project.showcaseImages}
-        title={project.title}
-        platform={project.platform}
+      <ProjectDetailModal
+        project={project}
         priority={priority}
         showPlatformBadge={showPlatformBadge}
       />

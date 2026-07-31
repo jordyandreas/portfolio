@@ -352,20 +352,20 @@ export const projects: Project[] = [
     slug: "1on1-video-call-website",
     title: "1-on-1 Video Call Website",
     shortDescription:
-      "Browser-based talent/host portal with KYC onboarding, realtime video calls, chat, earnings, and withdrawals.",
+      "Browser-based talent platform with multi-step KYC onboarding, real-time video calls, chat, earnings management, and withdrawals.",
     overview:
-      "Browser-based talent/host portal with multi-step KYC onboarding, real-time video calls, chat, earnings, and withdrawals - built with a Next.js BFF gateway and Agora/Firebase realtime.",
-    domain: "Media / Creator Platform",
-    role: "Frontend Engineer - talent portal, realtime calling, and BFF-integrated flows",
+      "Browser-based talent platform with multi-step KYC onboarding, real-time video calls, chat, earnings management, and withdrawals. Built on a Next.js BFF architecture with Agora and Firebase for realtime communication.",
+    domain: "Media / Talent Platform",
+    role: "Frontend Engineer - talent platform, realtime calling, and BFF-integrated flows",
     context:
-      "Talent hosts needed a browser portal for onboarding, live calls, chat, and payout workflows on a video-call platform.",
+      "Talent hosts needed a browser platform for onboarding, live calls, chat, and payout workflows on a video-call product.",
     challenge:
-      "Combine multi-step KYC, Agora realtime media/chat, and earnings/withdrawal flows behind a clear Next.js BFF gateway.",
+      "Combine multi-step KYC, Agora realtime media/chat, and earnings/withdrawal flows behind a clear Next.js BFF architecture.",
     contribution:
-      "Built the talent/host web experience with KYC onboarding, Agora video/chat, Firebase realtime patterns, and earnings/withdrawal surfaces.",
+      "Built the talent platform web experience with KYC onboarding, Agora video/chat, Firebase realtime patterns, and earnings/withdrawal surfaces.",
     outcomes: [
-      "Shipped a talent portal covering KYC, live calls, chat, earnings, and withdrawals.",
-      "Integrated Agora RTC/Chat and Firebase realtime through a Next.js BFF gateway.",
+      "Shipped a talent platform covering KYC, live calls, chat, earnings management, and withdrawals.",
+      "Integrated Agora RTC/Chat and Firebase realtime through a Next.js BFF architecture.",
       "Kept complex host workflows structured with typed forms, query state, and UI primitives.",
     ],
     technologies: [
@@ -385,9 +385,9 @@ export const projects: Project[] = [
       "WebSocket",
     ],
     highlights: [
-      "Built a browser talent/host portal with multi-step KYC onboarding.",
+      "Built a browser talent platform with multi-step KYC onboarding.",
       "Integrated realtime video calls and chat with Agora and Firebase.",
-      "Supported earnings and withdrawals through a Next.js BFF gateway.",
+      "Supported earnings management and withdrawals through a Next.js BFF architecture.",
     ],
     githubUrl: null,
     liveUrl: null,
@@ -536,20 +536,28 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/personal-portfolio-website/01-cover.png",
+        src: "/projects/personal-portfolio-website/01-cover.webp",
         alt: "Personal Portfolio Website showcase screenshot 1",
       },
       {
-        src: "/projects/personal-portfolio-website/02-showcase.png",
+        src: "/projects/personal-portfolio-website/02-showcase.webp",
         alt: "Personal Portfolio Website showcase screenshot 2",
       },
       {
-        src: "/projects/personal-portfolio-website/03-showcase.png",
+        src: "/projects/personal-portfolio-website/03-showcase.webp",
         alt: "Personal Portfolio Website showcase screenshot 3",
       },
       {
-        src: "/projects/personal-portfolio-website/04-showcase.png",
+        src: "/projects/personal-portfolio-website/04-showcase.webp",
         alt: "Personal Portfolio Website showcase screenshot 4",
+      },
+      {
+        src: "/projects/personal-portfolio-website/05-showcase.webp",
+        alt: "Personal Portfolio Website showcase screenshot 5",
+      },
+      {
+        src: "/projects/personal-portfolio-website/06-showcase.webp",
+        alt: "Personal Portfolio Website showcase screenshot 6",
       },
     ],
     order: 8,

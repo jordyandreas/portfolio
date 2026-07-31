@@ -1,20 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Images, X } from "lucide-react";
+import { ArrowUpRight, Images, X } from "lucide-react";
 import { createPortal } from "react-dom";
 
-import { focusRingClassName, projectImageHoverClassName } from "@/components/motion/interaction";
+import { focusRingClassName } from "@/components/motion/interaction";
 import { Button } from "@/components/ui/button";
-import type { ProjectPlatform } from "@/data/projects";
+import type { Project, ProjectPlatform } from "@/data/projects";
+import { ProjectDetailContent } from "@/features/projects/project-detail-content";
 import { ProjectImage } from "@/features/projects/project-image";
 import { ProjectShowcaseCarousel } from "@/features/projects/project-showcase-carousel";
 import { cn } from "@/lib/utils";
-
-type ShowcaseImage = {
-  src: string;
-  alt: string;
-};
 
 const PLATFORM_LABEL: Record<ProjectPlatform, string> = {
   web: "Web",
@@ -22,24 +18,20 @@ const PLATFORM_LABEL: Record<ProjectPlatform, string> = {
   backend: "Backend",
 };
 
-type ProjectGalleryModalProps = {
-  images: ShowcaseImage[];
-  title: string;
-  platform: ProjectPlatform;
+type ProjectDetailModalProps = {
+  project: Project;
   priority?: boolean;
   showPlatformBadge?: boolean;
 };
 
-export function ProjectGalleryModal({
-  images,
-  title,
-  platform,
+export function ProjectDetailModal({
+  project,
   priority = false,
   showPlatformBadge = false,
-}: ProjectGalleryModalProps) {
+}: ProjectDetailModalProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const coverImage = images[0] ?? null;
-  const platformLabel = PLATFORM_LABEL[platform];
+  const coverImage = project.showcaseImages[0] ?? null;
+  const platformLabel = PLATFORM_LABEL[project.platform];
 
   useEffect(() => {
     if (!isOpen) {
@@ -69,9 +61,9 @@ export function ProjectGalleryModal({
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          aria-label={`Open ${title} image gallery`}
+          aria-label={`Open ${project.title} project details`}
           className={cn(
-            "group/preview relative aspect-video overflow-hidden rounded-2xl border border-border bg-background/40 text-left",
+            "group/preview relative aspect-2/1 overflow-hidden rounded-2xl border border-border bg-background/40 text-left",
             focusRingClassName,
           )}
         >
@@ -79,25 +71,25 @@ export function ProjectGalleryModal({
             src={coverImage.src}
             alt={coverImage.alt}
             priority={priority}
-            className={cn(
-              projectImageHoverClassName,
-              "object-cover object-top transition-transform duration-200 group-hover/preview:scale-[1.02]",
-            )}
+            className="object-contain"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/45 via-black/10 to-transparent" />
           {showPlatformBadge ? (
             <span className="absolute bottom-3 left-3 inline-flex items-center rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
               {platformLabel}
             </span>
           ) : null}
-          <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-            <Images className="size-3.5" aria-hidden="true" />
-            Preview gallery
+          <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm transition-[transform,background-color,border-color] duration-200 group-hover/preview:-translate-y-0.5 group-hover/preview:border-white/35 group-hover/preview:bg-black/60 motion-reduce:transition-none motion-reduce:group-hover/preview:translate-y-0">
+            <ArrowUpRight
+              className="size-3.5 transition-transform duration-200 group-hover/preview:translate-x-0.5 group-hover/preview:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover/preview:translate-x-0 motion-reduce:group-hover/preview:translate-y-0"
+              aria-hidden="true"
+            />
+            View Project
           </span>
         </button>
       ) : (
-        <div className="relative flex aspect-video min-h-[10rem] w-full items-center justify-center rounded-2xl border border-border bg-background/40 text-muted-foreground/50">
+        <div className="relative flex aspect-2/1 min-h-40 w-full items-center justify-center rounded-2xl border border-border bg-background/40 text-muted-foreground/50">
           <Images className="size-10" strokeWidth={1.5} />
           {showPlatformBadge ? (
             <span className="absolute bottom-3 left-3 inline-flex items-center rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
@@ -110,23 +102,23 @@ export function ProjectGalleryModal({
       {isOpen
         ? createPortal(
             <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/72 p-4 backdrop-blur-sm sm:p-6"
+              className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden overscroll-none bg-black/72 p-4 sm:p-6"
               role="dialog"
               aria-modal="true"
-              aria-label={`${title} image gallery`}
+              aria-label={`${project.title} project details`}
               onClick={() => setIsOpen(false)}
             >
               <div
-                className="relative w-full max-w-5xl rounded-[1.75rem] border border-white/12 bg-background p-4 shadow-[0_32px_120px_-40px_rgba(0,0,0,0.5)] sm:p-5"
+                className="relative max-h-[min(90vh,56rem)] w-full max-w-5xl overflow-y-auto overscroll-contain rounded-[1.75rem] border border-white/12 bg-background p-4 shadow-[0_32px_120px_-40px_rgba(0,0,0,0.5)] scrollbar-none sm:p-5"
                 onClick={(event) => event.stopPropagation()}
               >
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground">
-                      Project Preview
+                      Project details
                     </p>
                     <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                      {title}
+                      {project.title}
                     </h3>
                   </div>
 
@@ -134,7 +126,7 @@ export function ProjectGalleryModal({
                     type="button"
                     size="icon"
                     variant="ghost"
-                    aria-label={`Close ${title} image gallery`}
+                    aria-label={`Close ${project.title} project details`}
                     onClick={() => setIsOpen(false)}
                     className="rounded-full"
                   >
@@ -143,10 +135,12 @@ export function ProjectGalleryModal({
                 </div>
 
                 <ProjectShowcaseCarousel
-                  images={images}
-                  title={title}
+                  images={project.showcaseImages}
+                  title={project.title}
                   controlsVisibility="always"
                 />
+
+                <ProjectDetailContent project={project} />
               </div>
             </div>,
             document.body,
