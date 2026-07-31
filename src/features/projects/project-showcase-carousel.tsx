@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, Images } from "lucide-react";
 
-import { projectImageHoverClassName } from "@/components/motion/interaction";
 import { ProjectImage } from "@/features/projects/project-image";
 import { cn } from "@/lib/utils";
 
@@ -49,17 +48,14 @@ export function ProjectShowcaseCarousel({
   }
 
   return (
-    <div className="group relative aspect-video overflow-hidden rounded-2xl border border-border bg-background/40">
+    <div className="group relative aspect-2/1 overflow-hidden rounded-2xl border border-border bg-background/40">
       {activeImage ? (
         <>
           <ProjectImage
             key={activeImage.src}
             src={activeImage.src}
             alt={activeImage.alt}
-            className={cn(
-              projectImageHoverClassName,
-              "object-contain p-2 group-hover:scale-[1.01]",
-            )}
+            className="object-contain"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 

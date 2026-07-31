@@ -54,7 +54,7 @@ export const aboutContent: AboutContent = {
       icon: "globe",
     },
     {
-      title: "Mobile Apps",
+      title: "Mobile Development",
       description: "Cross-platform delivery for consumer and multi-service products.",
       icon: "smartphone",
     },
@@ -83,7 +83,7 @@ export const aboutPageContent: AboutPageContent = {
       icon: "globe",
     },
     {
-      title: "Mobile Apps",
+      title: "Mobile Development",
       description: "Cross-platform delivery for consumer and multi-service products.",
       icon: "smartphone",
     },
