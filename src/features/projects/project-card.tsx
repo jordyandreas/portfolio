@@ -25,9 +25,14 @@ const techBadgeClassName =
 type ProjectCardProps = {
   project: Project;
   priority?: boolean;
+  showPlatformBadge?: boolean;
 };
 
-export function ProjectCard({ project, priority = false }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  priority = false,
+  showPlatformBadge = false,
+}: ProjectCardProps) {
   const visibleTechnologies = project.technologies.slice(0, VISIBLE_TECH_COUNT);
   const remainingTechnologies = project.technologies.slice(VISIBLE_TECH_COUNT);
   const remainingTechnologyCount = remainingTechnologies.length;
@@ -42,7 +47,9 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
       <ProjectGalleryModal
         images={project.showcaseImages}
         title={project.title}
+        platform={project.platform}
         priority={priority}
+        showPlatformBadge={showPlatformBadge}
       />
 
       <div className="flex flex-1 flex-col gap-4">

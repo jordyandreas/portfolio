@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 
 import { focusRingClassName, projectImageHoverClassName } from "@/components/motion/interaction";
 import { Button } from "@/components/ui/button";
+import type { ProjectPlatform } from "@/data/projects";
 import { ProjectImage } from "@/features/projects/project-image";
 import { ProjectShowcaseCarousel } from "@/features/projects/project-showcase-carousel";
 import { cn } from "@/lib/utils";
@@ -15,19 +16,30 @@ type ShowcaseImage = {
   alt: string;
 };
 
+const PLATFORM_LABEL: Record<ProjectPlatform, string> = {
+  web: "Web",
+  mobile: "Mobile",
+  backend: "Backend",
+};
+
 type ProjectGalleryModalProps = {
   images: ShowcaseImage[];
   title: string;
+  platform: ProjectPlatform;
   priority?: boolean;
+  showPlatformBadge?: boolean;
 };
 
 export function ProjectGalleryModal({
   images,
   title,
+  platform,
   priority = false,
+  showPlatformBadge = false,
 }: ProjectGalleryModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const coverImage = images[0] ?? null;
+  const platformLabel = PLATFORM_LABEL[platform];
 
   useEffect(() => {
     if (!isOpen) {
@@ -74,14 +86,24 @@ export function ProjectGalleryModal({
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+          {showPlatformBadge ? (
+            <span className="absolute bottom-3 left-3 inline-flex items-center rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
+              {platformLabel}
+            </span>
+          ) : null}
           <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
             <Images className="size-3.5" aria-hidden="true" />
             Preview gallery
           </span>
         </button>
       ) : (
-        <div className="flex aspect-video min-h-[10rem] w-full items-center justify-center rounded-2xl border border-border bg-background/40 text-muted-foreground/50">
+        <div className="relative flex aspect-video min-h-[10rem] w-full items-center justify-center rounded-2xl border border-border bg-background/40 text-muted-foreground/50">
           <Images className="size-10" strokeWidth={1.5} />
+          {showPlatformBadge ? (
+            <span className="absolute bottom-3 left-3 inline-flex items-center rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
+              {platformLabel}
+            </span>
+          ) : null}
         </div>
       )}
 

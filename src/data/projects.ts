@@ -29,9 +29,9 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "lxscore-live-sport-website",
-    slug: "lxscore-live-sport-website",
-    title: "LXScore - Live Sport Website",
+    id: "live-sport-website",
+    slug: "live-sport-website",
+    title: "Live Sport Website",
     shortDescription:
       "A live sports website providing real-time match scores and updates under peak traffic.",
     overview:
@@ -56,25 +56,25 @@ export const projects: Project[] = [
       "Shipped responsive, high-performance frontend components for sports audiences.",
     ],
     githubUrl: null,
-    liveUrl: "https://lxscore.com",
+    liveUrl: null,
     status: "completed",
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/lxscore-live-sport-website/01-cover.png",
-        alt: "LXScore - Live Sport Website showcase screenshot 1",
+        src: "/projects/live-sport-website/01-cover.webp",
+        alt: "Live Sport Website showcase screenshot 1",
       },
     ],
     order: 4,
   },
   {
-    id: "titantaiment-short-video-platform",
-    slug: "titantaiment-short-video-platform",
-    title: "Titantaiment - Short Video Streaming Platform",
+    id: "short-video-streaming-platform",
+    slug: "short-video-streaming-platform",
+    title: "Short Video Streaming Platform",
     shortDescription:
       "A TikTok-like short-video web platform with vertical playback, engagement, and infinite feed flows.",
     overview:
-      "Titantaiment is a modern short-video streaming platform built to replicate the experience of TikTok, featuring seamless vertical video playback, interactive engagement, and dynamic feed algorithms. The platform is designed with a focus on speed, scalability, and user experience, enabling creators to upload and share short videos while viewers can scroll infinitely, like, comment, and follow in real-time.",
+      "A modern short-video streaming platform built to replicate the experience of TikTok, featuring seamless vertical video playback, interactive engagement, and dynamic feed algorithms. The platform is designed with a focus on speed, scalability, and user experience, enabling creators to upload and share short videos while viewers can scroll infinitely, like, comment, and follow in real-time.",
     domain: "Media / Social Video",
     role: "Frontend Engineer - short-video playback and engagement interface delivery",
     context:
@@ -107,8 +107,8 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/titantaiment-short-video-platform/01-cover.png",
-        alt: "Titantaiment - Short Video Streaming Platform showcase screenshot 1",
+        src: "/projects/short-video-streaming-platform/01-cover.webp",
+        alt: "Short Video Streaming Platform showcase screenshot 1",
       },
     ],
     order: 10,
@@ -154,23 +154,23 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/digica-academy-lms/01-cover.png",
+        src: "/projects/digica-academy-lms/01-cover.webp",
         alt: "Digica Academy LMS showcase screenshot 1",
       },
       {
-        src: "/projects/digica-academy-lms/02-showcase.png",
+        src: "/projects/digica-academy-lms/02-showcase.webp",
         alt: "Digica Academy LMS showcase screenshot 2",
       },
       {
-        src: "/projects/digica-academy-lms/03-showcase.png",
+        src: "/projects/digica-academy-lms/03-showcase.webp",
         alt: "Digica Academy LMS showcase screenshot 3",
       },
       {
-        src: "/projects/digica-academy-lms/04-showcase.png",
+        src: "/projects/digica-academy-lms/04-showcase.webp",
         alt: "Digica Academy LMS showcase screenshot 4",
       },
       {
-        src: "/projects/digica-academy-lms/05-showcase.png",
+        src: "/projects/digica-academy-lms/05-showcase.webp",
         alt: "Digica Academy LMS showcase screenshot 5",
       },
     ],
@@ -209,15 +209,15 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/ulaman-bali-hotel-website/01-cover.png",
+        src: "/projects/ulaman-bali-hotel-website/01-cover.webp",
         alt: "Ulaman Bali Hotel Website showcase screenshot 1",
       },
       {
-        src: "/projects/ulaman-bali-hotel-website/02-showcase.png",
+        src: "/projects/ulaman-bali-hotel-website/02-showcase.webp",
         alt: "Ulaman Bali Hotel Website showcase screenshot 2",
       },
       {
-        src: "/projects/ulaman-bali-hotel-website/03-showcase.png",
+        src: "/projects/ulaman-bali-hotel-website/03-showcase.webp",
         alt: "Ulaman Bali Hotel Website showcase screenshot 3",
       },
     ],
@@ -264,32 +264,32 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/digica-finance-dashboard/01-cover.png",
+        src: "/projects/digica-finance-dashboard/01-cover.webp",
         alt: "Digica Finance Dashboard showcase screenshot 1",
       },
     ],
     order: 5,
   },
   {
-    id: "miracall-dashboard-suite",
-    slug: "miracall-dashboard-suite",
-    title: "Miracall Dashboard Suite",
+    id: "video-call-dashboard-suite",
+    slug: "video-call-dashboard-suite",
+    title: "Video Call Dashboard Suite",
     shortDescription:
-      "Internal dashboard suite for a video-call platform - Admin, Agency, and Referral apps in one Turborepo.",
+      "Modular Turborepo dashboard suite with shared UI and auth across Admin, Agency, and Referral apps.",
     overview:
-      "Internal dashboard suite for a video-call platform - Admin (ops & transactions), Agency (talent & income), and Referral (campaigns & withdrawals) - built as a Turborepo monorepo with shared UI and auth.",
+      "Established a modular frontend architecture for a video-call platform's internal tools - Admin (ops & transactions), Agency (talent & income), and Referral (campaigns & withdrawals) - delivered as a Turborepo monorepo with shared UI, auth, and data-fetching foundations.",
     domain: "Media / Internal Tools",
-    role: "Frontend Engineer - monorepo dashboard delivery and shared UI/auth architecture",
+    role: "Frontend Engineer - modular monorepo architecture and shared UI/auth delivery",
     context:
-      "A video-call platform that needed separate internal surfaces for ops, agency talent management, and referral campaigns without duplicating UI or auth.",
+      "A video-call platform needed separate internal surfaces for ops, agency talent management, and referral campaigns without duplicating UI systems or authentication.",
     challenge:
-      "Ship three related dashboards with shared design and auth while keeping domain workflows clear and maintainable.",
+      "Keep three domain dashboards independently shippable while sharing one design system, auth layer, and maintainable frontend architecture.",
     contribution:
-      "Built the Admin, Agency, and Referral dashboard apps in a Turborepo/pnpm monorepo with shared UI, auth, and data-fetching patterns.",
+      "Designed and implemented the Turborepo/pnpm monorepo structure, shared UI and auth packages, and the Admin, Agency, and Referral dashboard apps on top of that foundation.",
     outcomes: [
-      "Delivered a multi-app internal suite covering ops, talent income, and referral withdrawals.",
-      "Established shared UI and auth foundations across Admin, Agency, and Referral apps.",
-      "Structured the product as a Turborepo monorepo for scalable frontend delivery.",
+      "Established modular frontend architecture across Admin, Agency, and Referral dashboards.",
+      "Shared UI and auth foundations reduced duplication and kept product delivery consistent.",
+      "Structured the suite as a Turborepo monorepo for scalable, multi-app frontend delivery.",
     ],
     technologies: [
       "Next.js",
@@ -303,8 +303,8 @@ export const projects: Project[] = [
       "Zod",
     ],
     highlights: [
-      "Built Admin, Agency, and Referral dashboards for a video-call platform.",
-      "Shared UI and auth across apps in a Turborepo monorepo.",
+      "Established modular frontend architecture with a Turborepo setup.",
+      "Shared UI and auth across Admin, Agency, and Referral dashboards.",
       "Used TanStack Query, NextAuth, and React Hook Form/Zod for data and forms.",
     ],
     githubUrl: null,
@@ -313,44 +313,44 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/miracall-dashboard-suite/01-cover.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 1",
+        src: "/projects/video-call-dashboard-suite/01-cover.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 1",
       },
       {
-        src: "/projects/miracall-dashboard-suite/02-showcase.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 2",
+        src: "/projects/video-call-dashboard-suite/02-showcase.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 2",
       },
       {
-        src: "/projects/miracall-dashboard-suite/03-showcase.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 3",
+        src: "/projects/video-call-dashboard-suite/03-showcase.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 3",
       },
       {
-        src: "/projects/miracall-dashboard-suite/04-showcase.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 4",
+        src: "/projects/video-call-dashboard-suite/04-showcase.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 4",
       },
       {
-        src: "/projects/miracall-dashboard-suite/05-showcase.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 5",
+        src: "/projects/video-call-dashboard-suite/05-showcase.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 5",
       },
       {
-        src: "/projects/miracall-dashboard-suite/06-showcase.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 6",
+        src: "/projects/video-call-dashboard-suite/06-showcase.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 6",
       },
       {
-        src: "/projects/miracall-dashboard-suite/07-showcase.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 7",
+        src: "/projects/video-call-dashboard-suite/07-showcase.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 7",
       },
       {
-        src: "/projects/miracall-dashboard-suite/08-showcase.png",
-        alt: "Miracall Dashboard Suite showcase screenshot 8",
+        src: "/projects/video-call-dashboard-suite/08-showcase.webp",
+        alt: "Video Call Dashboard Suite showcase screenshot 8",
       },
     ],
     order: 2,
   },
   {
-    id: "miracall-talent-web",
-    slug: "miracall-talent-web",
-    title: "Miracall Talent Web",
+    id: "1on1-video-call-website",
+    slug: "1on1-video-call-website",
+    title: "1-on-1 Video Call Website",
     shortDescription:
       "Browser-based talent/host portal with KYC onboarding, realtime video calls, chat, earnings, and withdrawals.",
     overview:
@@ -390,45 +390,45 @@ export const projects: Project[] = [
       "Supported earnings and withdrawals through a Next.js BFF gateway.",
     ],
     githubUrl: null,
-    liveUrl: "https://miracall-talent-web.vercel.app",
+    liveUrl: null,
     status: "completed",
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/miracall-talent-web/01-cover.png",
-        alt: "Miracall Talent Web showcase screenshot 1",
+        src: "/projects/1on1-video-call-website/01-cover.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 1",
       },
       {
-        src: "/projects/miracall-talent-web/02-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 2",
+        src: "/projects/1on1-video-call-website/02-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 2",
       },
       {
-        src: "/projects/miracall-talent-web/03-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 3",
+        src: "/projects/1on1-video-call-website/03-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 3",
       },
       {
-        src: "/projects/miracall-talent-web/04-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 4",
+        src: "/projects/1on1-video-call-website/04-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 4",
       },
       {
-        src: "/projects/miracall-talent-web/05-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 5",
+        src: "/projects/1on1-video-call-website/05-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 5",
       },
       {
-        src: "/projects/miracall-talent-web/06-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 6",
+        src: "/projects/1on1-video-call-website/06-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 6",
       },
       {
-        src: "/projects/miracall-talent-web/07-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 7",
+        src: "/projects/1on1-video-call-website/07-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 7",
       },
       {
-        src: "/projects/miracall-talent-web/08-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 8",
+        src: "/projects/1on1-video-call-website/08-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 8",
       },
       {
-        src: "/projects/miracall-talent-web/09-showcase.png",
-        alt: "Miracall Talent Web showcase screenshot 9",
+        src: "/projects/1on1-video-call-website/09-showcase.webp",
+        alt: "1-on-1 Video Call Website showcase screenshot 9",
       },
     ],
     order: 1,
@@ -473,23 +473,23 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/baby-monitor-dashboard/01-cover.png",
+        src: "/projects/baby-monitor-dashboard/01-cover.webp",
         alt: "Baby Monitor Dashboard showcase screenshot 1",
       },
       {
-        src: "/projects/baby-monitor-dashboard/02-showcase.png",
+        src: "/projects/baby-monitor-dashboard/02-showcase.webp",
         alt: "Baby Monitor Dashboard showcase screenshot 2",
       },
       {
-        src: "/projects/baby-monitor-dashboard/03-showcase.png",
+        src: "/projects/baby-monitor-dashboard/03-showcase.webp",
         alt: "Baby Monitor Dashboard showcase screenshot 3",
       },
       {
-        src: "/projects/baby-monitor-dashboard/04-showcase.png",
+        src: "/projects/baby-monitor-dashboard/04-showcase.webp",
         alt: "Baby Monitor Dashboard showcase screenshot 4",
       },
       {
-        src: "/projects/baby-monitor-dashboard/05-showcase.png",
+        src: "/projects/baby-monitor-dashboard/05-showcase.webp",
         alt: "Baby Monitor Dashboard showcase screenshot 5",
       },
     ],
@@ -596,20 +596,24 @@ export const projects: Project[] = [
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/namea-company-profile-website/01-cover.png",
+        src: "/projects/namea-company-profile-website/01-cover.webp",
         alt: "Namea - Company Profile Website showcase screenshot 1",
       },
       {
-        src: "/projects/namea-company-profile-website/02-showcase.png",
+        src: "/projects/namea-company-profile-website/02-showcase.webp",
         alt: "Namea - Company Profile Website showcase screenshot 2",
       },
       {
-        src: "/projects/namea-company-profile-website/03-showcase.png",
+        src: "/projects/namea-company-profile-website/03-showcase.webp",
         alt: "Namea - Company Profile Website showcase screenshot 3",
       },
       {
-        src: "/projects/namea-company-profile-website/04-showcase.png",
+        src: "/projects/namea-company-profile-website/04-showcase.webp",
         alt: "Namea - Company Profile Website showcase screenshot 4",
+      },
+      {
+        src: "/projects/namea-company-profile-website/05-showcase.webp",
+        alt: "Company Profile Website showcase screenshot 5",
       },
     ],
     order: 3,
@@ -653,11 +657,11 @@ export const projects: Project[] = [
     platform: "mobile",
     showcaseImages: [
       {
-        src: "/projects/maybank-finance-app-v2/01-cover.png",
+        src: "/projects/maybank-finance-app-v2/01-cover.webp",
         alt: "Maybank Finance App - Revamp to V2 showcase screenshot 1",
       },
     ],
-    order: 3,
+    order: 4,
   },
   {
     id: "maybank-vospay-loan-app",
@@ -698,11 +702,65 @@ export const projects: Project[] = [
     platform: "mobile",
     showcaseImages: [
       {
-        src: "/projects/maybank-vospay-loan-app/01-cover.png",
+        src: "/projects/maybank-vospay-loan-app/01-cover.webp",
         alt: "Vospay - Loan Apps Internal Maybank showcase screenshot 1",
       },
     ],
-    order: 4,
+    order: 5,
+  },
+  {
+    id: "masjidqu",
+    slug: "masjidqu",
+    title: "Masjidqu",
+    shortDescription:
+      "A React Native mosque companion app for prayer times, nearby mosques, Qibla, digital infaq, and community activities.",
+    overview:
+      "Masjidqu is a cross-platform mobile app that helps Muslims start and stay consistent with daily worship. It combines prayer schedules and reminders, nearby mosque discovery with ratings and reviews, Qibla direction, digital infaq, and mosque activity surfaces in a clean React Native experience.",
+    domain: "Religion / Lifestyle Mobile",
+    role: "Mobile Developer - worship companion flows and location-aware mosque discovery",
+    context:
+      "Muslim users needed a single mobile companion for prayer timing, mosque discovery, donations, and community engagement without jumping across multiple tools.",
+    challenge:
+      "Combine location-aware mosque discovery, accurate prayer schedules, Qibla guidance, and donation flows into one coherent mobile experience.",
+    contribution:
+      "Built the React Native app around prayer dashboards, mosque discovery cards, Qibla compass, digital infaq CTAs, and community engagement surfaces with shared navigation and state patterns.",
+    outcomes: [
+      "Shipped a worship companion covering prayer times, reminders, and next-prayer countdown.",
+      "Enabled nearby mosque discovery with distance, ratings, and review signals.",
+      "Supported Qibla guidance and digital infaq pathways for mosque contributions.",
+    ],
+    technologies: [
+      "React Native",
+      "TypeScript",
+      "React Navigation",
+      "Redux",
+      "Axios",
+      "REST API",
+      "Firebase",
+      "Google Maps",
+      "Push Notifications",
+      "Payment Gateway",
+    ],
+    highlights: [
+      "Built prayer-time dashboards with reminders and next-prayer countdown.",
+      "Added nearby mosque discovery with ratings, distance, and review context.",
+      "Supported Qibla compass and digital infaq donation flows in React Native.",
+    ],
+    githubUrl: null,
+    liveUrl: null,
+    status: "completed",
+    platform: "mobile",
+    showcaseImages: [
+      {
+        src: "/projects/masjidqu/01-cover.webp",
+        alt: "Masjidqu brand splash and logo showcase screenshot 1",
+      },
+      {
+        src: "/projects/masjidqu/02-showcase.webp",
+        alt: "Masjidqu prayer times and mosque discovery app showcase screenshot 2",
+      },
+    ],
+    order: 1,
   },
   {
     id: "video-call-apps",
@@ -746,7 +804,7 @@ export const projects: Project[] = [
     status: "completed",
     platform: "mobile",
     showcaseImages: [],
-    order: 1,
+    order: 2,
   },
   {
     id: "master-owner-app",
@@ -789,7 +847,7 @@ export const projects: Project[] = [
     status: "completed",
     platform: "mobile",
     showcaseImages: [],
-    order: 2,
+    order: 3,
   },
   {
     id: "wallet-disbursement-service",

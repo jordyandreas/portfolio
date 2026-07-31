@@ -5,11 +5,16 @@ import { cn } from "@/lib/utils";
 type ProjectGridProps = {
   projects: Project[];
   className?: string;
+  showPlatformBadge?: boolean;
 };
 
 const ABOVE_FOLD_IMAGE_COUNT = 3;
 
-export function ProjectGrid({ projects, className }: ProjectGridProps) {
+export function ProjectGrid({
+  projects,
+  className,
+  showPlatformBadge = false,
+}: ProjectGridProps) {
   return (
     <ul
       className={cn(
@@ -22,6 +27,7 @@ export function ProjectGrid({ projects, className }: ProjectGridProps) {
           <ProjectCard
             project={project}
             priority={index < ABOVE_FOLD_IMAGE_COUNT}
+            showPlatformBadge={showPlatformBadge}
           />
         </li>
       ))}
