@@ -65,7 +65,7 @@ export const projects: Project[] = [
         alt: "LXScore - Live Sport Website showcase screenshot 1",
       },
     ],
-    order: 1,
+    order: 4,
   },
   {
     id: "titantaiment-short-video-platform",
@@ -174,7 +174,7 @@ export const projects: Project[] = [
         alt: "Digica Academy LMS showcase screenshot 5",
       },
     ],
-    order: 5,
+    order: 6,
   },
   {
     id: "ulaman-bali-hotel-website",
@@ -268,7 +268,7 @@ export const projects: Project[] = [
         alt: "Digica Finance Dashboard showcase screenshot 1",
       },
     ],
-    order: 4,
+    order: 5,
   },
   {
     id: "miracall-dashboard-suite",
@@ -345,7 +345,7 @@ export const projects: Project[] = [
         alt: "Miracall Dashboard Suite showcase screenshot 8",
       },
     ],
-    order: 3,
+    order: 2,
   },
   {
     id: "miracall-talent-web",
@@ -431,7 +431,7 @@ export const projects: Project[] = [
         alt: "Miracall Talent Web showcase screenshot 9",
       },
     ],
-    order: 2,
+    order: 1,
   },
   {
     id: "baby-monitor-dashboard",
@@ -612,7 +612,7 @@ export const projects: Project[] = [
         alt: "Namea - Company Profile Website showcase screenshot 4",
       },
     ],
-    order: 6,
+    order: 3,
   },
   {
     id: "maybank-finance-app-v2",
@@ -657,7 +657,7 @@ export const projects: Project[] = [
         alt: "Maybank Finance App - Revamp to V2 showcase screenshot 1",
       },
     ],
-    order: 2,
+    order: 3,
   },
   {
     id: "maybank-vospay-loan-app",
@@ -789,7 +789,7 @@ export const projects: Project[] = [
     status: "completed",
     platform: "mobile",
     showcaseImages: [],
-    order: 3,
+    order: 2,
   },
   {
     id: "wallet-disbursement-service",
