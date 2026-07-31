@@ -881,7 +881,7 @@ export const projects: Project[] = [
     status: "completed",
     platform: "backend",
     showcaseImages: [],
-    order: 2,
+    order: 1,
   },
   {
     id: "master-owner-api",
@@ -922,7 +922,7 @@ export const projects: Project[] = [
     status: "completed",
     platform: "backend",
     showcaseImages: [],
-    order: 1,
+    order: 2,
   },
 ];
 
