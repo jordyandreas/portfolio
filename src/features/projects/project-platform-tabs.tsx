@@ -15,15 +15,22 @@ const PLATFORM_ORDER: Record<ProjectPlatform, number> = {
 };
 
 const ALL_TAB_ORDER: string[] = [
-  "lxscore-live-sport-website",
   "miracall-talent-web",
   "miracall-dashboard-suite",
+  "namea-company-profile-website",
+  "lxscore-live-sport-website",
   "digica-finance-dashboard",
   "digica-academy-lms",
-  "namea-company-profile-website",
   "baby-monitor-dashboard",
   "personal-portfolio-website",
   "ulaman-bali-hotel-website",
+  "titantaiment-short-video-platform",
+  "video-call-apps",
+  "master-owner-app",
+  "master-owner-api",
+  "wallet-disbursement-service",
+  "maybank-finance-app-v2",
+  "maybank-vospay-loan-app",
 ];
 
 const PLATFORM_TABS: { id: ProjectTab; label: string }[] = [

@@ -12,7 +12,7 @@ export const socialImageContentType = "image/png";
 
 export async function getProfileImageDataUrl() {
   const profileImageBuffer = await readFile(
-    join(process.cwd(), "public/profile/jordy-andreas.png"),
+    join(process.cwd(), "public/profile/jordy-andreas-new.jpg"),
   );
 
   return Uint8Array.from(profileImageBuffer).buffer;
@@ -22,9 +22,7 @@ type RenderSocialImageProps = {
   profileImageSrc: ArrayBuffer;
 };
 
-export function renderSocialImage({
-  profileImageSrc,
-}: RenderSocialImageProps) {
+export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
   return (
     <div
       style={{
@@ -47,7 +45,8 @@ export function renderSocialImage({
           border: "1px solid rgba(255,255,255,0.12)",
           borderRadius: "32px",
           padding: "56px",
-          background: "linear-gradient(180deg, rgba(248,248,248,0.08), rgba(255,255,255,0.02))",
+          background:
+            "linear-gradient(180deg, rgba(248,248,248,0.08), rgba(255,255,255,0.02))",
         }}
       >
         <div
@@ -112,7 +111,9 @@ export function renderSocialImage({
             }}
           >
             <div style={{ display: "flex" }}>{siteConfig.email}</div>
-            <div style={{ display: "flex" }}>{siteConfig.url.replace(/^https?:\/\//, "")}</div>
+            <div style={{ display: "flex" }}>
+              {siteConfig.url.replace(/^https?:\/\//, "")}
+            </div>
           </div>
         </div>
         <div
