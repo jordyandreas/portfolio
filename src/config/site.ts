@@ -22,8 +22,7 @@ export const siteConfig: SiteConfig = {
   title: "Senior Frontend Engineer",
   description:
     "I build thoughtful frontend products with strong engineering craft, product mindset, and real-world case studies for recruiters and engineering leaders.",
-  // TODO: replace with confirmed production URL before deployment
-  url: "https://jordyandreas.dev",
+  url: "https://www.jordyandreas-dev.web.id",
   email: "jordyandreas76@gmail.com",
   location: "Jakarta, Indonesia",
   whatsapp: "6285397994422",
@@ -39,7 +38,13 @@ export const siteConfig: SiteConfig = {
     "Portfolio",
     "Jordy Andreas",
   ],
-  techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+  techStack: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "React Native",
+  ],
 };
 
 export const siteTitle = `${siteConfig.name} | ${siteConfig.title}`;

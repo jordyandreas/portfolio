@@ -11,12 +11,19 @@ export const socialImageSize = {
 
 export const socialImageContentType = "image/png";
 
+const PORTRAIT_SIZE = 318;
+
+const GLOBE_ICON_SRC = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B7B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>`,
+)}`;
+
+/** Pre-clipped circular portrait (transparent corners) for reliable OG rendering. */
 export async function getProfileImageDataUrl() {
   const profileImageBuffer = await readFile(
-    join(process.cwd(), "public/profile/jordy-andreas-new.jpg"),
+    join(process.cwd(), "public/profile/jordy-andreas-og.png"),
   );
 
-  return `data:image/jpeg;base64,${profileImageBuffer.toString("base64")}`;
+  return `data:image/png;base64,${profileImageBuffer.toString("base64")}`;
 }
 
 type RenderSocialImageProps = {
@@ -26,6 +33,7 @@ type RenderSocialImageProps = {
 export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
   const { eyebrow, headline } = heroContent;
   const siteHost = siteConfig.url.replace(/^https?:\/\//, "");
+  const skills = siteConfig.techStack.slice(0, 5);
 
   return (
     <div
@@ -103,19 +111,52 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
             >
               {headline}
             </div>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "10px",
+                marginTop: "8px",
+                maxWidth: "620px",
+              }}
+            >
+              {skills.map((skill) => (
+                <div
+                  key={skill}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    border: "1px solid rgba(34,34,34,0.12)",
+                    borderRadius: "9999px",
+                    padding: "8px 16px",
+                    fontSize: 18,
+                    fontWeight: 500,
+                    color: "#7B7B7B",
+                    background: "rgba(255,255,255,0.7)",
+                  }}
+                >
+                  {skill}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "center",
-              width: "100%",
+              gap: "10px",
               fontSize: 22,
               color: "#7B7B7B",
             }}
           >
-            <div style={{ display: "flex" }}>{siteConfig.email}</div>
+            <img
+              src={GLOBE_ICON_SRC}
+              alt=""
+              width="22"
+              height="22"
+              style={{ width: "22px", height: "22px" }}
+            />
             <div style={{ display: "flex" }}>{siteHost}</div>
           </div>
         </div>
@@ -127,7 +168,7 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
             flexShrink: 0,
             width: "420px",
             height: "420px",
-            borderRadius: "9999px",
+            borderRadius: "210px",
             border: "1px solid rgba(34,34,34,0.12)",
             alignItems: "center",
             justifyContent: "center",
@@ -138,7 +179,7 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
               display: "flex",
               width: "360px",
               height: "360px",
-              borderRadius: "9999px",
+              borderRadius: "180px",
               border: "1px solid rgba(34,34,34,0.15)",
               alignItems: "center",
               justifyContent: "center",
@@ -147,25 +188,22 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
             <div
               style={{
                 display: "flex",
-                width: "318px",
-                height: "318px",
-                borderRadius: "9999px",
-                overflow: "hidden",
+                width: `${PORTRAIT_SIZE}px`,
+                height: `${PORTRAIT_SIZE}px`,
+                borderRadius: `${PORTRAIT_SIZE / 2}px`,
                 border: "1px solid rgba(34,34,34,0.12)",
-                background: "#F8F8F8",
                 boxShadow: "0 24px 80px -48px rgba(34,34,34,0.35)",
+                overflow: "hidden",
               }}
             >
               <img
                 src={profileImageSrc}
                 alt={siteConfig.name}
-                width="318"
-                height="318"
+                width={PORTRAIT_SIZE}
+                height={PORTRAIT_SIZE}
                 style={{
-                  width: "318px",
-                  height: "318px",
-                  objectFit: "cover",
-                  objectPosition: "center 20%",
+                  width: `${PORTRAIT_SIZE}px`,
+                  height: `${PORTRAIT_SIZE}px`,
                 }}
               />
             </div>
