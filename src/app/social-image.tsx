@@ -1,7 +1,8 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import { siteConfig, siteSocialImage, siteTitle } from "@/config/site";
+import { siteConfig, siteSocialImage } from "@/config/site";
+import { heroContent } from "@/data/hero";
 
 export const socialImageSize = {
   width: siteSocialImage.width,
@@ -15,14 +16,17 @@ export async function getProfileImageDataUrl() {
     join(process.cwd(), "public/profile/jordy-andreas-new.jpg"),
   );
 
-  return Uint8Array.from(profileImageBuffer).buffer;
+  return `data:image/jpeg;base64,${profileImageBuffer.toString("base64")}`;
 }
 
 type RenderSocialImageProps = {
-  profileImageSrc: ArrayBuffer;
+  profileImageSrc: string;
 };
 
 export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
+  const { eyebrow, headline } = heroContent;
+  const siteHost = siteConfig.url.replace(/^https?:\/\//, "");
+
   return (
     <div
       style={{
@@ -30,9 +34,9 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
         width: "100%",
         height: "100%",
         background:
-          "linear-gradient(135deg, #222222 0%, #3a3a3a 55%, #7B7B7B 100%)",
-        color: "white",
-        padding: "64px",
+          "linear-gradient(160deg, #FFFFFF 0%, #F8F8F8 55%, #EEEEEE 100%)",
+        color: "#222222",
+        padding: "56px 64px",
       }}
     >
       <div
@@ -40,13 +44,9 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
           display: "flex",
           width: "100%",
           height: "100%",
+          alignItems: "center",
           justifyContent: "space-between",
-          gap: "40px",
-          border: "1px solid rgba(255,255,255,0.12)",
-          borderRadius: "32px",
-          padding: "56px",
-          background:
-            "linear-gradient(180deg, rgba(248,248,248,0.08), rgba(255,255,255,0.02))",
+          gap: "48px",
         }}
       >
         <div
@@ -56,23 +56,24 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
             justifyContent: "space-between",
             flex: 1,
             height: "100%",
+            maxWidth: "680px",
           }}
         >
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "18px",
-              maxWidth: "820px",
+              gap: "20px",
             }}
           >
             <div
               style={{
                 display: "flex",
-                fontSize: 24,
-                letterSpacing: "0.24em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.7)",
+                fontSize: 56,
+                lineHeight: 1.05,
+                fontWeight: 700,
+                letterSpacing: "-0.045em",
+                color: "#222222",
               }}
             >
               {siteConfig.name}
@@ -80,23 +81,27 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
             <div
               style={{
                 display: "flex",
-                fontSize: 62,
-                lineHeight: 1.05,
-                fontWeight: 700,
-                letterSpacing: "-0.04em",
+                fontSize: 22,
+                fontWeight: 500,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "#7B7B7B",
               }}
             >
-              {siteTitle}
+              {eyebrow}
             </div>
             <div
               style={{
                 display: "flex",
-                fontSize: 26,
-                lineHeight: 1.45,
-                color: "rgba(255,255,255,0.82)",
+                fontSize: 28,
+                lineHeight: 1.35,
+                fontWeight: 500,
+                letterSpacing: "-0.02em",
+                color: "#222222",
+                maxWidth: "620px",
               }}
             >
-              {siteConfig.description}
+              {headline}
             </div>
           </div>
 
@@ -106,22 +111,24 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
               justifyContent: "space-between",
               alignItems: "center",
               width: "100%",
-              fontSize: 24,
-              color: "rgba(255,255,255,0.72)",
+              fontSize: 22,
+              color: "#7B7B7B",
             }}
           >
             <div style={{ display: "flex" }}>{siteConfig.email}</div>
-            <div style={{ display: "flex" }}>
-              {siteConfig.url.replace(/^https?:\/\//, "")}
-            </div>
+            <div style={{ display: "flex" }}>{siteHost}</div>
           </div>
         </div>
+
+        {/* Hero-matching circular portrait with concentric rings */}
         <div
           style={{
             display: "flex",
             flexShrink: 0,
-            width: "280px",
-            height: "100%",
+            width: "420px",
+            height: "420px",
+            borderRadius: "9999px",
+            border: "1px solid rgba(34,34,34,0.12)",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -129,26 +136,39 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
           <div
             style={{
               display: "flex",
-              width: "100%",
-              height: "100%",
-              borderRadius: "28px",
-              overflow: "hidden",
-              border: "1px solid rgba(255,255,255,0.14)",
-              background: "rgba(255,255,255,0.06)",
+              width: "360px",
+              height: "360px",
+              borderRadius: "9999px",
+              border: "1px solid rgba(34,34,34,0.15)",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <img
-              src={profileImageSrc as unknown as string}
-              alt={siteConfig.name}
-              width="280"
-              height="406"
+            <div
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center top",
+                display: "flex",
+                width: "318px",
+                height: "318px",
+                borderRadius: "9999px",
+                overflow: "hidden",
+                border: "1px solid rgba(34,34,34,0.12)",
+                background: "#F8F8F8",
+                boxShadow: "0 24px 80px -48px rgba(34,34,34,0.35)",
               }}
-            />
+            >
+              <img
+                src={profileImageSrc}
+                alt={siteConfig.name}
+                width="318"
+                height="318"
+                style={{
+                  width: "318px",
+                  height: "318px",
+                  objectFit: "cover",
+                  objectPosition: "center 20%",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
