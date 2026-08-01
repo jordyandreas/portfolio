@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jordy Andreas — Video Call Platform Case Study</title>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "neutral",
+        securityLevel: "strict",
+        flowchart: { htmlLabels: true, curve: "basis" },
+      });
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #111827;
+        --muted: #4b5563;
+        --line: #e5e7eb;
+        --surface: #f9fafb;
+        --accent: #0f766e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+          serif;
+        font-size: 15px;
+        line-height: 1.55;
+        background: #fff;
+      }
+
+      .page {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 48px 40px 64px;
+      }
+
+      header {
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .meta strong {
+        color: var(--ink);
+      }
+
+      .note {
+        margin: 18px 0 0;
+        padding: 12px 14px;
+        background: var(--surface);
+        border-left: 3px solid var(--accent);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      h2 {
+        margin: 32px 0 12px;
+        font-size: 18px;
+        letter-spacing: -0.01em;
+      }
+
+      h3 {
+        margin: 24px 0 10px;
+        font-size: 15px;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      }
+
+      p,
+      li {
+        margin: 0 0 10px;
+      }
+
+      ul {
+        margin: 0 0 12px;
+        padding-left: 1.2em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0 16px;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 8px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: var(--surface);
+        font-weight: 600;
+      }
+
+      .diagram {
+        margin: 14px 0 20px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        overflow-x: auto;
+      }
+
+      .mermaid {
+        display: flex;
+        justify-content: center;
+      }
+
+      .footer {
+        margin-top: 40px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      @media print {
+        body {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+
+        .page {
+          max-width: none;
+          padding: 0;
+        }
+
+        .diagram {
+          break-inside: avoid;
+        }
+
+        h2,
+        h3 {
+          break-after: avoid;
+        }
+
+        .no-print {
+          display: none !important;
+        }
+      }
+
+      .print-hint {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: #0f766e;
+        color: #fff;
+        padding: 10px 16px;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      .print-hint code {
+        background: rgba(255, 255, 255, 0.18);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="print-hint no-print">
+      Open in Chrome → wait for diagrams to render →
+      <strong>File → Print → Save as PDF</strong>
+      (suggested name:
+      <code>Jordy-Andreas-Case-Study-Video-Call-Platform.pdf</code>)
+    </div>
+
+    <main class="page">
+      <header>
+        <h1>Case Study — Video Call Platform Frontend Architecture</h1>
+        <div class="meta">
+          <div><strong>Author:</strong> Jordy Andreas</div>
+          <div><strong>Role:</strong> Senior Frontend Developer</div>
+          <div><strong>Company:</strong> PT. Namea Kreasi Teknologi</div>
+          <div><strong>Period:</strong> August 2023 – Present</div>
+          <div>
+            <strong>Focus projects:</strong> Video Call Dashboard Suite · 1-on-1
+            Video Call Website
+          </div>
+        </div>
+        <p class="note">
+          <strong>Confidentiality:</strong> Client product under NDA. This
+          writeup is architecture-level only — no proprietary credentials,
+          internal URLs, or customer data. UI screenshots available on request
+          via portfolio.
+        </p>
+      </header>
+
+      <section>
+        <h2>1. Context</h2>
+        <p>
+          The video-call product needed separate internal tools for different
+          stakeholders, plus a browser talent platform for hosts.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Surface</th>
+              <th>Audience</th>
+              <th>Primary jobs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Admin</strong></td>
+              <td>Platform ops</td>
+              <td>Operations &amp; transactions</td>
+            </tr>
+            <tr>
+              <td><strong>Agency</strong></td>
+              <td>Agency partners</td>
+              <td>Talent management &amp; income</td>
+            </tr>
+            <tr>
+              <td><strong>Referral</strong></td>
+              <td>Referral partners</td>
+              <td>Campaigns &amp; withdrawals</td>
+            </tr>
+            <tr>
+              <td><strong>Talent website</strong></td>
+              <td>Talent hosts</td>
+              <td>KYC, live 1-on-1 calls, chat, earnings, withdrawals</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Duplicating UI systems and authentication across apps would have
+          slowed delivery and created inconsistent UX.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Challenge</h2>
+        <ul>
+          <li>
+            Ship three domain dashboards independently without fragmenting the
+            design system
+          </li>
+          <li>
+            Share authentication and data-fetching patterns safely across apps
+          </li>
+          <li>
+            Integrate realtime media (Agora), chat, Firebase, and payout flows
+            behind a clear Next.js BFF architecture
+          </li>
+          <li>
+            Keep complex host workflows typed and maintainable (forms, query
+            state, UI primitives)
+          </li>
+          <li>
+            Support peak realtime usage without sacrificing clarity of frontend
+            architecture
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Approach &amp; architecture</h2>
+        <p>
+          I designed and implemented a <strong>Turborepo / pnpm monorepo</strong>
+          with shared packages for UI, auth (NextAuth), and data-fetching.
+          Admin, Agency, and Referral apps consume those packages and talk to
+          backend services through a consistent frontend / BFF layer.
+        </p>
+        <p>
+          For the talent website, I built KYC onboarding, Agora RTC/Chat,
+          Firebase realtime patterns, and earnings/withdrawal surfaces on
+          Next.js + TypeScript.
+        </p>
+
+        <h3>3.1 Multi-app architecture</h3>
+        <div class="diagram">
+          <pre class="mermaid">
+flowchart TB
+  subgraph Clients["Client applications"]
+    Admin["Admin Dashboard\nops & transactions"]
+    Agency["Agency Dashboard\ntalent & income"]
+    Referral["Referral Dashboard\ncampaigns & withdrawals"]
+    TalentWeb["1-on-1 Talent Website\nKYC · calls · earnings"]
+  end
+
+  subgraph Shared["Turborepo shared packages"]
+    UI["UI / design system"]
+    Auth["Auth / NextAuth"]
+    Data["Data-fetching utilities"]
+  end
+
+  subgraph Backend["Backend & realtime"]
+    BFF["Next.js BFF / API layer"]
+    API["Backend services"]
+    Agora["Agora RTC + Chat"]
+    FB["Firebase realtime"]
+    WS["WebSocket signaling"]
+  end
+
+  Admin --> UI
+  Agency --> UI
+  Referral --> UI
+  Admin --> Auth
+  Agency --> Auth
+  Referral --> Auth
+  TalentWeb --> Auth
+  Admin --> Data
+  Agency --> Data
+  Referral --> Data
+
+  Admin --> BFF
+  Agency --> BFF
+  Referral --> BFF
+  TalentWeb --> BFF
+  BFF --> API
+  TalentWeb --> Agora
+  TalentWeb --> FB
+  TalentWeb --> WS
+          </pre>
+        </div>
+
+        <h3>3.2 Talent host call &amp; payout flow</h3>
+        <div class="diagram">
+          <pre class="mermaid">
+sequenceDiagram
+  participant Host as Talent Host Browser
+  participant BFF as Next.js BFF
+  participant API as Backend
+  participant Agora as Agora RTC/Chat
+  participant FB as Firebase
+
+  Host->>BFF: Auth + KYC submit
+  BFF->>API: Validate / persist KYC
+  Host->>BFF: Start / join call
+  BFF->>API: Issue session token
+  Host->>Agora: Connect media + chat
+  Host->>FB: Presence / realtime state
+  Host->>BFF: Earnings / withdrawal request
+  BFF->>API: Process payout workflow
+          </pre>
+        </div>
+
+        <h3>3.3 Role-scoped product surfaces</h3>
+        <div class="diagram">
+          <pre class="mermaid">
+flowchart LR
+  Ops["Admin — platform-wide ops"]
+  Ag["Agency — scoped talent & income"]
+  Ref["Referral — scoped campaigns & payouts"]
+  Host["Talent — host session & earnings"]
+  Caller["Caller apps — consumer sessions"]
+
+  Ops -->|"shared auth + UI"| Ag
+  Ag -->|"shared auth + UI"| Ref
+  Host -->|"Agora / Firebase / WS"| Caller
+          </pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Tech stack</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Technologies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apps &amp; monorepo</td>
+              <td>Next.js, TypeScript, Turborepo, pnpm</td>
+            </tr>
+            <tr>
+              <td>UI</td>
+              <td>MUI, Tailwind CSS, shadcn/ui</td>
+            </tr>
+            <tr>
+              <td>State &amp; data</td>
+              <td>TanStack Query, Zustand, Axios</td>
+            </tr>
+            <tr>
+              <td>Auth &amp; forms</td>
+              <td>NextAuth, React Hook Form, Zod</td>
+            </tr>
+            <tr>
+              <td>Realtime</td>
+              <td>Agora RTC, Agora Chat, Firebase, WebSocket</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>5. My contributions</h2>
+        <ul>
+          <li>
+            Designed and implemented the Turborepo/pnpm monorepo structure
+          </li>
+          <li>
+            Built shared UI and auth packages consumed by Admin, Agency, and
+            Referral
+          </li>
+          <li>
+            Delivered the three domain dashboard apps on that foundation
+          </li>
+          <li>
+            Built the talent web experience: multi-step KYC → live call/chat →
+            earnings/withdrawals
+          </li>
+          <li>
+            Integrated Agora RTC/Chat and Firebase realtime through a Next.js
+            BFF architecture
+          </li>
+          <li>
+            Mentored 2 junior frontend engineers through code reviews and shared
+            standards
+          </li>
+          <li>
+            Partnered with design and backend to keep UX and performance
+            consistent across Namea web/mobile surfaces
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. Outcomes</h2>
+        <ul>
+          <li>
+            Modular multi-app frontend architecture with reduced UI/auth
+            duplication
+          </li>
+          <li>
+            Consistent authentication and UX across Admin, Agency, and Referral
+            surfaces
+          </li>
+          <li>
+            Independently shippable dashboards with shared foundations
+          </li>
+          <li>
+            Production realtime talent flows covering onboarding through payouts
+          </li>
+          <li>
+            Related performance work across reusable web/mobile patterns (up to
+            ~60% page load improvement on relevant surfaces)
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. Related frontend highlights</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Role focus</th>
+              <th>Stack highlight</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Live Sport Website</strong></td>
+              <td>Realtime scores under peak traffic</td>
+              <td>Next.js, TypeScript, Tailwind, WebSockets</td>
+            </tr>
+            <tr>
+              <td><strong>Masjidqu</strong></td>
+              <td>Mobile worship companion</td>
+              <td>React Native, Redux, Maps, Firebase, payments</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="meta">
+          Masjidqu Play Store:
+          https://play.google.com/store/apps/details?id=com.namea.masjidqu&amp;hl=id
+        </p>
+      </section>
+
+      <div class="footer">
+        Jordy Andreas · Senior Frontend Developer · Architecture case study for
+        application review
+      </div>
+    </main>
+  </body>
+</html>
