@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 export const surfaceLiftClassName = cn(
   "transition-[border-color,background-color,box-shadow,transform] duration-200",
   "hover:border-foreground/15 hover:bg-surface-elevated/80 hover:shadow-[0_16px_40px_-32px_rgba(34,34,34,0.18)] hover:-translate-y-px",
+  "dark:hover:shadow-[0_16px_40px_-32px_rgba(0,0,0,0.55)]",
   "motion-reduce:transform-none motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-none",
 );
 
@@ -32,6 +33,7 @@ export const headerScrolledClassName = cn(
 
 export const headerFloatingShellClassName = cn(
   "rounded-2xl border border-border bg-background/92 shadow-[0_12px_40px_-20px_rgba(34,34,34,0.18)] backdrop-blur-xl md:rounded-full",
+  "dark:shadow-[0_12px_40px_-20px_rgba(0,0,0,0.55)]",
 );
 
 export const headerIdleShellClassName = "rounded-none border-transparent bg-transparent shadow-none";

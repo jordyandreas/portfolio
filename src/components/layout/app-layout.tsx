@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MotionProvider } from "@/components/motion/motion-provider";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 
 type AppLayoutProps = {
   children: ReactNode;
@@ -10,12 +11,14 @@ type AppLayoutProps = {
 
 export function AppLayout({ children }: AppLayoutProps) {
   return (
-    <MotionProvider>
-      <div className="flex min-h-full flex-col">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </div>
-    </MotionProvider>
+    <ThemeProvider>
+      <MotionProvider>
+        <div className="flex min-h-full flex-col">
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </MotionProvider>
+    </ThemeProvider>
   );
 }
