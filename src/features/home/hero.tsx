@@ -63,7 +63,7 @@ export function Hero() {
                 aria-hidden="true"
                 className="absolute inset-[7%] rounded-full border border-foreground/15 transition-[border-color,transform] duration-200 group-hover/portrait:border-foreground/30 motion-reduce:transition-none"
               />
-              <div className="absolute inset-[12%] overflow-hidden rounded-full border border-border bg-surface shadow-[0_24px_80px_-48px_rgba(34,34,34,0.35)] transition-[box-shadow,transform] duration-200 group-hover/portrait:shadow-[0_28px_70px_-40px_rgba(34,34,34,0.4)] motion-reduce:transform-none motion-reduce:transition-none">
+              <div className="absolute inset-[12%] overflow-hidden rounded-full border border-border bg-surface shadow-[0_24px_80px_-48px_rgba(34,34,34,0.35)] transition-[box-shadow,transform] duration-200 group-hover/portrait:shadow-[0_28px_70px_-40px_rgba(34,34,34,0.4)] dark:shadow-[0_24px_80px_-48px_rgba(0,0,0,0.55)] dark:group-hover/portrait:shadow-[0_28px_70px_-40px_rgba(0,0,0,0.65)] motion-reduce:transform-none motion-reduce:transition-none">
                 <Image
                   src={portrait.src}
                   alt={portrait.alt}

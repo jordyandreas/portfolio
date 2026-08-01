@@ -53,6 +53,8 @@
 }
 
 :root {
+  color-scheme: light;
+
   --palette-primary: #222222;
   --palette-secondary: #7b7b7b;
   --palette-tertiary: #f8f8f8;
@@ -97,38 +99,41 @@
 }
 
 .dark {
+  color-scheme: dark;
+
+  /* 1:1 invert of light roles onto the same palette stops */
   --background: var(--palette-primary);
   --foreground: var(--palette-white);
   --surface: color-mix(in srgb, var(--palette-primary) 92%, white);
-  --surface-elevated: color-mix(in srgb, var(--palette-primary) 84%, white);
-  --card: color-mix(in srgb, var(--palette-primary) 88%, white);
+  --surface-elevated: var(--palette-primary);
+  --card: var(--palette-primary);
   --card-foreground: var(--palette-white);
-  --popover: color-mix(in srgb, var(--palette-primary) 88%, white);
+  --popover: var(--palette-primary);
   --popover-foreground: var(--palette-white);
   --primary: var(--palette-white);
   --primary-foreground: var(--palette-primary);
   --brand: var(--palette-white);
   --brand-foreground: var(--palette-primary);
-  --secondary: color-mix(in srgb, var(--palette-primary) 84%, white);
+  --secondary: color-mix(in srgb, var(--palette-primary) 92%, white);
   --secondary-foreground: var(--palette-white);
-  --muted: color-mix(in srgb, var(--palette-primary) 84%, white);
+  --muted: color-mix(in srgb, var(--palette-primary) 92%, white);
   --muted-foreground: var(--palette-secondary);
-  --accent: color-mix(in srgb, var(--palette-primary) 84%, white);
+  --accent: color-mix(in srgb, var(--palette-primary) 92%, white);
   --accent-foreground: var(--palette-white);
   --destructive: #e85d5d;
-  --border: color-mix(in srgb, var(--palette-white) 14%, transparent);
-  --input: color-mix(in srgb, var(--palette-white) 16%, transparent);
+  --border: color-mix(in srgb, var(--palette-white) 12%, transparent);
+  --input: color-mix(in srgb, var(--palette-white) 14%, transparent);
   --ring: color-mix(in srgb, var(--palette-white) 35%, transparent);
   --chart-1: var(--palette-white);
   --chart-2: var(--palette-secondary);
   --chart-3: color-mix(in srgb, var(--palette-white) 55%, var(--palette-primary));
   --chart-4: color-mix(in srgb, var(--palette-white) 35%, var(--palette-primary));
-  --chart-5: color-mix(in srgb, var(--palette-primary) 84%, white);
-  --sidebar: color-mix(in srgb, var(--palette-primary) 88%, white);
+  --chart-5: color-mix(in srgb, var(--palette-primary) 92%, white);
+  --sidebar: var(--palette-primary);
   --sidebar-foreground: var(--palette-white);
   --sidebar-primary: var(--palette-white);
   --sidebar-primary-foreground: var(--palette-primary);
-  --sidebar-accent: color-mix(in srgb, var(--palette-primary) 84%, white);
+  --sidebar-accent: color-mix(in srgb, var(--palette-primary) 92%, white);
   --sidebar-accent-foreground: var(--palette-white);
   --sidebar-border: color-mix(in srgb, var(--palette-white) 12%, transparent);
   --sidebar-ring: var(--palette-secondary);

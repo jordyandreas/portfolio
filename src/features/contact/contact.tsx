@@ -28,7 +28,7 @@ export function Contact() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_srgb,var(--palette-primary)_5%,transparent),transparent_55%),linear-gradient(180deg,var(--background),color-mix(in_srgb,var(--palette-tertiary)_55%,var(--background)))]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_srgb,var(--foreground)_5%,transparent),transparent_55%),linear-gradient(180deg,var(--background),color-mix(in_srgb,var(--surface)_55%,var(--background)))]"
       />
 
       <Container className="relative py-8 sm:py-12 md:py-16">
@@ -120,7 +120,7 @@ export function Contact() {
           </div>
 
           <FadeIn delay={0.18}>
-            <div className="rounded-[1.75rem] border border-border bg-background/90 p-6 shadow-[0_24px_80px_-48px_rgba(34,34,34,0.28)] backdrop-blur-sm sm:p-8">
+            <div className="rounded-[1.75rem] border border-border bg-background/90 p-6 shadow-[0_24px_80px_-48px_rgba(34,34,34,0.28)] backdrop-blur-sm dark:shadow-[0_24px_80px_-48px_rgba(0,0,0,0.55)] sm:p-8">
               <ContactForm />
             </div>
           </FadeIn>

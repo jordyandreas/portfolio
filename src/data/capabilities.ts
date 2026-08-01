@@ -138,6 +138,7 @@ export const featuredTechStack: CapabilityTechnology[] = [
   { name: "React Native", icon: "reactNative" },
   { name: "Redux", icon: "redux" },
   { name: "GraphQL", icon: "graphql" },
+  { name: "REST", icon: "rest" },
   { name: "Supabase", icon: "supabase" },
   { name: "Expo", icon: "expo" },
   { name: "Ionic", icon: "ionic" },

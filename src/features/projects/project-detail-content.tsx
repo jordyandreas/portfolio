@@ -78,9 +78,9 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
             className={cn(
               "inline-flex h-8 items-center gap-1.5 rounded-full border px-2.5 pr-3 text-xs font-medium",
               project.status === "completed" &&
-                "border-emerald-200/80 bg-emerald-50 text-emerald-700",
+                "border-emerald-200/80 bg-emerald-50 text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/15 dark:text-emerald-300",
               project.status === "in-progress" &&
-                "border-amber-200/80 bg-amber-50 text-amber-800",
+                "border-amber-200/80 bg-amber-50 text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/15 dark:text-amber-300",
               project.status === "archived" &&
                 "border-border bg-muted/70 text-muted-foreground",
             )}
@@ -89,8 +89,10 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
               aria-hidden="true"
               className={cn(
                 "inline-flex size-4 shrink-0 items-center justify-center rounded-full",
-                project.status === "completed" && "bg-emerald-600 text-white",
-                project.status === "in-progress" && "bg-amber-500 text-white",
+                project.status === "completed" &&
+                  "bg-emerald-600 text-white dark:bg-emerald-500",
+                project.status === "in-progress" &&
+                  "bg-amber-500 text-white dark:bg-amber-400",
                 project.status === "archived" &&
                   "bg-muted-foreground/80 text-background",
               )}

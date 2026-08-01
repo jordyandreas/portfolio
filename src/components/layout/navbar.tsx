@@ -9,6 +9,7 @@ import { useEffect, useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { focusRingClassName } from "@/components/motion/interaction";
 import { motionEase } from "@/components/motion/tokens";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { navigationItems } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
@@ -173,14 +174,14 @@ export function Navbar({ isFloating = false }: NavbarProps) {
                         : "bg-transparent font-normal text-muted-foreground hover:text-foreground",
                       shouldReduceMotion &&
                         active &&
-                        "border border-foreground/15 bg-foreground/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl",
+                        "border border-foreground/15 bg-foreground/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]",
                     )}
                     onClick={() => handleNavSelection(item.href)}
                   >
                     {active && !shouldReduceMotion ? (
                       <motion.span
                         layoutId="nav-active-pill"
-                        className="absolute inset-0 z-0 rounded-full border border-foreground/15 bg-gradient-to-b from-foreground/[0.09] to-foreground/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_8px_20px_-14px_rgba(34,34,34,0.28)] backdrop-blur-xl"
+                        className="absolute inset-0 z-0 rounded-full border border-foreground/15 bg-gradient-to-b from-foreground/[0.09] to-foreground/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_8px_20px_-14px_rgba(34,34,34,0.28)] backdrop-blur-xl dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_8px_20px_-14px_rgba(0,0,0,0.45)]"
                         transition={{
                           type: "spring",
                           stiffness: 380,
@@ -198,7 +199,8 @@ export function Navbar({ isFloating = false }: NavbarProps) {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Button asChild size="sm" className="group rounded-full px-4">
+          <ThemeToggle />
+          <Button asChild size="sm" className="group h-9 rounded-full px-4">
             <Link
               href={contactCta.href}
               onClick={() => handleNavSelection(contactCta.href)}
@@ -212,23 +214,26 @@ export function Navbar({ isFloating = false }: NavbarProps) {
           </Button>
         </div>
 
-        <button
-          type="button"
-          className={cn(
-            "inline-flex size-10 items-center justify-center rounded-full border border-transparent bg-transparent text-foreground transition-[background-color,border-color,color] duration-200 hover:border-border hover:bg-surface md:hidden",
-            focusRingClassName,
-          )}
-          aria-expanded={isOpen}
-          aria-controls={menuId}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          onClick={() => setIsOpen((open) => !open)}
-        >
-          {isOpen ? (
-            <X className="size-5" aria-hidden="true" />
-          ) : (
-            <Menu className="size-5" aria-hidden="true" />
-          )}
-        </button>
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className={cn(
+              "inline-flex size-10 items-center justify-center rounded-full border border-transparent bg-transparent text-foreground transition-[background-color,border-color,color] duration-200 hover:border-border hover:bg-surface",
+              focusRingClassName,
+            )}
+            aria-expanded={isOpen}
+            aria-controls={menuId}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            onClick={() => setIsOpen((open) => !open)}
+          >
+            {isOpen ? (
+              <X className="size-5" aria-hidden="true" />
+            ) : (
+              <Menu className="size-5" aria-hidden="true" />
+            )}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence initial={false}>
@@ -264,7 +269,7 @@ export function Navbar({ isFloating = false }: NavbarProps) {
                         "block rounded-xl px-3 py-2.5 text-sm transition-[background-color,color,opacity] duration-200",
                         focusRingClassName,
                         isItemActive(item.href)
-                          ? "border border-foreground/15 bg-gradient-to-b from-foreground/[0.1] to-foreground/[0.05] font-medium text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] backdrop-blur-xl"
+                          ? "border border-foreground/15 bg-gradient-to-b from-foreground/[0.1] to-foreground/[0.05] font-medium text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] backdrop-blur-xl dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
                           : "bg-transparent text-muted-foreground hover:bg-accent hover:text-foreground",
                       )}
                       onClick={() => handleNavSelection(item.href)}
@@ -276,7 +281,7 @@ export function Navbar({ isFloating = false }: NavbarProps) {
               </ul>
 
               <div className="mt-2 flex flex-col gap-2 border-t border-border pt-2">
-                <Button asChild size="sm" className="group w-full justify-center rounded-full">
+                <Button asChild size="sm" className="group h-9 w-full justify-center rounded-full">
                   <Link
                     href={contactCta.href}
                     onClick={() => handleNavSelection(contactCta.href)}

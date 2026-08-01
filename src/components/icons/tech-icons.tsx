@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Accessibility,
   BadgeCheck,
@@ -28,10 +30,17 @@ import {
   Video,
   type LucideIcon,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import StackIcon, { type IconName } from "tech-stack-icons";
 
 import type { CapabilityTechnologyIcon } from "@/data/capabilities";
 import { cn } from "@/lib/utils";
+
+function useStackIconVariant(): "light" | "dark" {
+  const { resolvedTheme } = useTheme();
+
+  return resolvedTheme === "dark" ? "dark" : "light";
+}
 
 const brandIconNames: Partial<Record<CapabilityTechnologyIcon, IconName>> = {
   nextjs: "nextjs2",
@@ -139,12 +148,13 @@ export function CapabilityTechIcon({
   className,
 }: CapabilityTechIconProps) {
   const brandName = brandIconNames[name];
+  const variant = useStackIconVariant();
 
   if (brandName) {
     return (
       <StackIcon
         name={brandName}
-        variant="light"
+        variant={variant}
         className={cn("size-3.5 shrink-0", className)}
       />
     );
@@ -174,12 +184,13 @@ export function TechnologyLabelIcon({
   className,
 }: TechnologyLabelIconProps) {
   const stackName = technologyLabelToStackIcon[label];
+  const variant = useStackIconVariant();
 
   if (stackName) {
     return (
       <StackIcon
         name={stackName}
-        variant="light"
+        variant={variant}
         className={cn("size-3.5 shrink-0", className)}
       />
     );
