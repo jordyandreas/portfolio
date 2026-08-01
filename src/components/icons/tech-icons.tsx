@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 import StackIcon, { type IconName } from "tech-stack-icons";
 
-import type { CapabilityTechnologyIcon } from "@/data/capabilities";
+import type { CapabilityTechnologyIcon } from "@/data";
 import { cn } from "@/lib/utils";
 
 const brandIconNames: Partial<Record<CapabilityTechnologyIcon, IconName>> = {

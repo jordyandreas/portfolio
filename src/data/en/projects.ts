@@ -1,31 +1,4 @@
-export type ProjectStatus = "completed" | "in-progress" | "archived";
-
-export type ProjectPlatform = "web" | "mobile" | "backend";
-
-export type Project = {
-  id: string;
-  slug: string;
-  title: string;
-  shortDescription: string;
-  overview: string;
-  domain: string;
-  role: string;
-  context: string;
-  challenge: string;
-  contribution: string;
-  outcomes: string[];
-  technologies: string[];
-  highlights: string[];
-  githubUrl: string | null;
-  liveUrl: string | null;
-  status: ProjectStatus;
-  platform: ProjectPlatform;
-  showcaseImages: Array<{
-    src: string;
-    alt: string;
-  }>;
-  order: number;
-};
+import type { Project } from "@/data/types/projects";
 
 export const projects: Project[] = [
   {
@@ -933,16 +906,3 @@ export const projects: Project[] = [
     order: 2,
   },
 ];
-
-export function getProjectsByPlatform(platform: ProjectPlatform): Project[] {
-  return projects
-    .filter((project) => project.platform === platform)
-    .sort((projectA, projectB) => projectA.order - projectB.order);
-}
-
-export function getPreviewProjects(
-  platform: ProjectPlatform,
-  limit = 3,
-): Project[] {
-  return getProjectsByPlatform(platform).slice(0, limit);
-}

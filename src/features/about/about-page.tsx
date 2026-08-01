@@ -3,15 +3,20 @@ import { AboutIntro } from "@/features/about/about-intro";
 import { AboutTechStack } from "@/features/about/about-tech-stack";
 import { Experience } from "@/features/home/experience";
 import { Capabilities } from "@/features/home/skills";
+import type { Locale } from "@/i18n/config";
 
-export function AboutPage() {
+type AboutPageProps = {
+  locale: Locale;
+};
+
+export function AboutPage({ locale }: AboutPageProps) {
   return (
     <>
-      <AboutIntro />
-      <AboutTechStack />
-      <AboutExpertise />
-      <Experience />
-      <Capabilities />
+      <AboutIntro locale={locale} />
+      <AboutTechStack locale={locale} />
+      <AboutExpertise locale={locale} />
+      <Experience locale={locale} />
+      <Capabilities locale={locale} />
     </>
   );
 }

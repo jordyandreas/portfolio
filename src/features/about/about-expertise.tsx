@@ -4,7 +4,8 @@ import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { surfaceLiftClassName } from "@/components/motion/interaction";
-import { aboutPageContent, type AboutExpertiseIcon } from "@/data/about";
+import { getAboutPageContent, type AboutExpertiseIcon } from "@/data";
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
 const expertiseIcons: Record<AboutExpertiseIcon, LucideIcon> = {
@@ -13,8 +14,12 @@ const expertiseIcons: Record<AboutExpertiseIcon, LucideIcon> = {
   blocks: Blocks,
 };
 
-export function AboutExpertise() {
-  const { expertiseHeading, expertise } = aboutPageContent;
+type AboutExpertiseProps = {
+  locale: Locale;
+};
+
+export function AboutExpertise({ locale }: AboutExpertiseProps) {
+  const { expertiseHeading, expertise } = getAboutPageContent(locale);
 
   return (
     <section aria-labelledby="expertise-heading">

@@ -3,10 +3,20 @@ import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data";
 import { ProjectPlatformTabs } from "@/features/projects/project-platform-tabs";
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
+import { localizeHref } from "@/i18n/pathname";
 
-export function Projects() {
+type ProjectsProps = {
+  locale: Locale;
+};
+
+export function Projects({ locale }: ProjectsProps) {
+  const dictionary = getDictionary(locale);
+  const projects = getProjects(locale);
+
   return (
     <section id="projects" aria-labelledby="projects-heading">
       <Container className="py-8 sm:py-12 md:py-16">
@@ -16,7 +26,7 @@ export function Projects() {
               id="projects-heading"
               className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
             >
-              My Projects
+              {dictionary.projects.heading}
             </h2>
           </Reveal>
 
@@ -26,6 +36,7 @@ export function Projects() {
               limit={3}
               includeAllTab={false}
               initialTab="web"
+              copy={dictionary.projects}
             />
           </Reveal>
 
@@ -36,7 +47,9 @@ export function Projects() {
               size="lg"
               className="border-border bg-surface text-foreground hover:border-foreground/15 hover:bg-surface-elevated"
             >
-              <Link href="/projects">Browse all projects</Link>
+              <Link href={localizeHref("/projects", locale)}>
+                {dictionary.projects.browseAll}
+              </Link>
             </Button>
           </Reveal>
         </div>

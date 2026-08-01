@@ -6,32 +6,29 @@ import { createPortal } from "react-dom";
 
 import { focusRingClassName } from "@/components/motion/interaction";
 import { Button } from "@/components/ui/button";
-import type { Project, ProjectPlatform } from "@/data/projects";
+import type { Project } from "@/data";
 import { ProjectDetailContent } from "@/features/projects/project-detail-content";
 import { ProjectImage } from "@/features/projects/project-image";
 import { ProjectShowcaseCarousel } from "@/features/projects/project-showcase-carousel";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { cn } from "@/lib/utils";
-
-const PLATFORM_LABEL: Record<ProjectPlatform, string> = {
-  web: "Web",
-  mobile: "Mobile",
-  backend: "Backend",
-};
 
 type ProjectDetailModalProps = {
   project: Project;
   priority?: boolean;
   showPlatformBadge?: boolean;
+  copy: Dictionary["projects"];
 };
 
 export function ProjectDetailModal({
   project,
   priority = false,
   showPlatformBadge = false,
+  copy,
 }: ProjectDetailModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const coverImage = project.showcaseImages[0] ?? null;
-  const platformLabel = PLATFORM_LABEL[project.platform];
+  const platformLabel = copy.platformLabels[project.platform];
 
   useEffect(() => {
     if (!isOpen) {
@@ -61,7 +58,7 @@ export function ProjectDetailModal({
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          aria-label={`Open ${project.title} project details`}
+          aria-label={`${copy.viewProject}: ${project.title}`}
           className={cn(
             "group/preview relative aspect-2/1 overflow-hidden rounded-2xl border border-border bg-background/40 text-left",
             focusRingClassName,
@@ -85,7 +82,7 @@ export function ProjectDetailModal({
               className="size-3.5 transition-transform duration-200 group-hover/preview:translate-x-0.5 group-hover/preview:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover/preview:translate-x-0 motion-reduce:group-hover/preview:translate-y-0"
               aria-hidden="true"
             />
-            View Project
+            {copy.viewProject}
           </span>
         </button>
       ) : (
@@ -105,7 +102,7 @@ export function ProjectDetailModal({
               className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden overscroll-none bg-black/72 p-4 sm:p-6"
               role="dialog"
               aria-modal="true"
-              aria-label={`${project.title} project details`}
+              aria-label={`${project.title} ${copy.projectDetails}`}
               onClick={() => setIsOpen(false)}
             >
               <div
@@ -115,7 +112,7 @@ export function ProjectDetailModal({
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground">
-                      Project details
+                      {copy.projectDetails}
                     </p>
                     <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                       {project.title}
@@ -126,7 +123,7 @@ export function ProjectDetailModal({
                     type="button"
                     size="icon"
                     variant="ghost"
-                    aria-label={`Close ${project.title} project details`}
+                    aria-label={copy.closeDetails}
                     onClick={() => setIsOpen(false)}
                     className="rounded-full"
                   >
@@ -140,7 +137,7 @@ export function ProjectDetailModal({
                   controlsVisibility="always"
                 />
 
-                <ProjectDetailContent project={project} />
+                <ProjectDetailContent project={project} copy={copy} />
               </div>
             </div>,
             document.body,

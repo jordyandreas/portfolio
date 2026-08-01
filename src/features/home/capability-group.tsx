@@ -1,7 +1,7 @@
 import { CapabilityTechIcon } from "@/components/icons/tech-icons";
 import { Badge } from "@/components/ui/badge";
 import { surfaceLiftClassName } from "@/components/motion/interaction";
-import type { CapabilityGroup as CapabilityGroupData } from "@/data/capabilities";
+import type { CapabilityGroup as CapabilityGroupData } from "@/data";
 import { cn } from "@/lib/utils";
 
 type CapabilityGroupProps = {

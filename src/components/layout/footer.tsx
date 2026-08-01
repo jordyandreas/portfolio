@@ -1,9 +1,14 @@
+"use client";
+
 import { Mail } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { focusRingClassName } from "@/components/motion/interaction";
 import { lastUpdated as lastUpdatedIso } from "@/config/last-updated";
 import { siteConfig } from "@/config/site";
+import { localeDate } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
+import { useLocale } from "@/i18n/use-locale";
 import { cn } from "@/lib/utils";
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -32,39 +37,41 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
-const socialLinks = [
-  {
-    label: `Email ${siteConfig.name}`,
-    href: `mailto:${siteConfig.email}`,
-    icon: Mail,
-    external: false,
-  },
-  {
-    label: `GitHub profile for ${siteConfig.name}`,
-    href: siteConfig.github,
-    icon: GitHubIcon,
-    external: true,
-  },
-  {
-    label: `LinkedIn profile for ${siteConfig.name}`,
-    href: siteConfig.linkedin,
-    icon: LinkedInIcon,
-    external: true,
-  },
-] as const;
-
-function formatLastUpdated(isoDate: string): string {
+function formatLastUpdated(isoDate: string, locale: string): string {
   const date = new Date(`${isoDate}T00:00:00`);
 
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat(locale, {
     month: "short",
     year: "numeric",
   }).format(date);
 }
 
 export function Footer() {
+  const locale = useLocale();
+  const dictionary = getDictionary(locale);
   const year = new Date().getFullYear();
-  const lastUpdated = formatLastUpdated(lastUpdatedIso);
+  const lastUpdated = formatLastUpdated(lastUpdatedIso, localeDate[locale]);
+
+  const socialLinks = [
+    {
+      label: dictionary.footer.emailAria(siteConfig.name),
+      href: `mailto:${siteConfig.email}`,
+      icon: Mail,
+      external: false,
+    },
+    {
+      label: dictionary.footer.githubAria(siteConfig.name),
+      href: siteConfig.github,
+      icon: GitHubIcon,
+      external: true,
+    },
+    {
+      label: dictionary.footer.linkedinAria(siteConfig.name),
+      href: siteConfig.linkedin,
+      icon: LinkedInIcon,
+      external: true,
+    },
+  ] as const;
 
   return (
     <footer className="border-t border-border">
@@ -74,10 +81,10 @@ export function Footer() {
             {siteConfig.name}
           </p>
           <p className="text-sm text-muted-foreground">
-            All rights reserved &copy; {year}.
+            {dictionary.footer.allRightsReserved} &copy; {year}.
           </p>
           <p className="text-sm text-muted-foreground">
-            Last updated {lastUpdated}
+            {dictionary.footer.lastUpdated} {lastUpdated}
           </p>
           <ul className="mt-2 flex items-center gap-3">
             {socialLinks.map((link) => {

@@ -1,7 +1,7 @@
 import { TechnologyLabelIcon } from "@/components/icons/tech-icons";
 import { Badge } from "@/components/ui/badge";
 import { experienceRowClassName } from "@/components/motion/interaction";
-import type { ExperienceEntry as ExperienceEntryData } from "@/data/experience";
+import type { ExperienceEntry as ExperienceEntryData } from "@/data";
 import { cn } from "@/lib/utils";
 
 type ExperienceEntryProps = {

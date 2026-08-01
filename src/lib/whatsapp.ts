@@ -1,16 +1,18 @@
 import type { ContactFormValues } from "@/features/contact/schema";
+import type { Dictionary } from "@/i18n/dictionaries";
 
 export function buildWhatsAppHref(
   phone: string,
   values: ContactFormValues,
+  copy: Dictionary["contact"]["whatsapp"],
 ): string {
   const digits = phone.replace(/\D/g, "");
   const text = [
-    `Hi Jordy - I'd like to get in touch.`,
+    copy.greeting,
     "",
-    `Name: ${values.name}`,
-    `Email: ${values.email}`,
-    `Subject: ${values.subject}`,
+    `${copy.name}: ${values.name}`,
+    `${copy.email}: ${values.email}`,
+    `${copy.subject}: ${values.subject}`,
     "",
     values.message,
   ].join("\n");

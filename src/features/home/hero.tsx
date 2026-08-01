@@ -4,10 +4,16 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/motion/fade-in";
-import { heroContent } from "@/data/hero";
+import { getHeroContent } from "@/data";
+import type { Locale } from "@/i18n/config";
 
-export function Hero() {
-  const { eyebrow, headline, primaryCta, secondaryCta, portrait } = heroContent;
+type HeroProps = {
+  locale: Locale;
+};
+
+export function Hero({ locale }: HeroProps) {
+  const { eyebrow, headline, primaryCta, secondaryCta, portrait } =
+    getHeroContent(locale);
 
   return (
     <section id="home" aria-labelledby="hero-heading">

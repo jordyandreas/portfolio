@@ -2,8 +2,9 @@
 
 import { useId, useState } from "react";
 
-import type { Project, ProjectPlatform } from "@/data/projects";
+import type { Project, ProjectPlatform } from "@/data";
 import { ProjectGrid } from "@/features/projects/project-grid";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { cn } from "@/lib/utils";
 
 type ProjectTab = ProjectPlatform | "all";
@@ -34,34 +35,7 @@ const ALL_TAB_ORDER: string[] = [
   "maybank-vospay-loan-app",
 ];
 
-const PLATFORM_TABS: { id: ProjectTab; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "web", label: "Web Application" },
-  { id: "mobile", label: "Mobile Application" },
-  { id: "backend", label: "Backend" },
-];
-
-const EMPTY_COPY: Record<
-  ProjectTab,
-  { title: string; description: string }
-> = {
-  all: {
-    title: "No projects yet",
-    description: "Selected work will appear here soon.",
-  },
-  web: {
-    title: "No web projects yet",
-    description: "Web application work will appear here soon.",
-  },
-  mobile: {
-    title: "No mobile projects yet",
-    description: "Mobile projects will appear here soon.",
-  },
-  backend: {
-    title: "No backend projects yet",
-    description: "Backend services will appear here soon.",
-  },
-};
+const TAB_IDS: ProjectTab[] = ["all", "web", "mobile", "backend"];
 
 function sortProjects(projects: Project[]): Project[] {
   return [...projects].sort((projectA, projectB) => {
@@ -110,6 +84,7 @@ type ProjectPlatformTabsProps = {
   className?: string;
   includeAllTab?: boolean;
   initialTab?: ProjectTab;
+  copy: Dictionary["projects"];
 };
 
 export function ProjectPlatformTabs({
@@ -118,6 +93,7 @@ export function ProjectPlatformTabs({
   className,
   includeAllTab = true,
   initialTab = includeAllTab ? "all" : "web",
+  copy,
 }: ProjectPlatformTabsProps) {
   const [platform, setPlatform] = useState<ProjectTab>(initialTab);
   const tablistId = useId();
@@ -133,28 +109,28 @@ export function ProjectPlatformTabs({
     typeof limit === "number"
       ? filteredProjects.slice(0, limit)
       : filteredProjects;
-  const emptyCopy = EMPTY_COPY[platform];
+  const emptyCopy = copy.empty[platform];
 
   return (
     <div className={cn("space-y-8", className)}>
       <div
         role="tablist"
-        aria-label="Project platform"
+        aria-label={copy.platformTablist}
         className="flex flex-wrap justify-center gap-3"
       >
-        {PLATFORM_TABS.filter((tab) => includeAllTab || tab.id !== "all").map((tab) => {
-          const isSelected = platform === tab.id;
+        {TAB_IDS.filter((id) => includeAllTab || id !== "all").map((id) => {
+          const isSelected = platform === id;
 
           return (
             <button
-              key={tab.id}
+              key={id}
               type="button"
               role="tab"
-              id={`${tablistId}-${tab.id}`}
+              id={`${tablistId}-${id}`}
               aria-selected={isSelected}
               aria-controls={panelId}
               tabIndex={isSelected ? 0 : -1}
-              onClick={() => setPlatform(tab.id)}
+              onClick={() => setPlatform(id)}
               className={cn(
                 "rounded-full border px-4 py-2 text-sm font-medium transition-[background-color,border-color,color] duration-200",
                 "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
@@ -163,7 +139,7 @@ export function ProjectPlatformTabs({
                   : "border-border bg-surface text-muted-foreground hover:border-foreground/20 hover:text-foreground",
               )}
             >
-              {tab.label}
+              {copy.tabs[id]}
             </button>
           );
         })}
@@ -178,6 +154,7 @@ export function ProjectPlatformTabs({
           <ProjectGrid
             projects={visibleProjects}
             showPlatformBadge={platform === "all"}
+            copy={copy}
           />
         ) : (
           <div className="rounded-3xl border border-dashed border-border bg-surface/60 px-6 py-16 text-center sm:px-8">

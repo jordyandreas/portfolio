@@ -1,10 +1,15 @@
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { ExperienceEntry } from "@/features/home/experience-entry";
-import { experienceContent } from "@/data/experience";
+import { getExperienceContent } from "@/data";
+import type { Locale } from "@/i18n/config";
 
-export function Experience() {
-  const { heading, entries } = experienceContent;
+type ExperienceProps = {
+  locale: Locale;
+};
+
+export function Experience({ locale }: ExperienceProps) {
+  const { heading, entries } = getExperienceContent(locale);
 
   return (
     <section id="experience" aria-labelledby="experience-heading">

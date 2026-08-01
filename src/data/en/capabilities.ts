@@ -1,51 +1,4 @@
-export type CapabilityTechnologyIcon =
-  | "nextjs"
-  | "react"
-  | "reactNative"
-  | "typescript"
-  | "featureModules"
-  | "renderingStrategy"
-  | "codeSplitting"
-  | "coreWebVitals"
-  | "tanstackQuery"
-  | "zustand"
-  | "redux"
-  | "graphql"
-  | "rest"
-  | "designCollaboration"
-  | "iteration"
-  | "codeReview"
-  | "shadcn"
-  | "tailwind"
-  | "componentLibraries"
-  | "visualHierarchy"
-  | "microInteractions"
-  | "accessibility"
-  | "responsiveLayout"
-  | "expo"
-  | "supabase"
-  | "firebase"
-  | "zod"
-  | "reactHookForm"
-  | "ionic"
-  | "angular";
-
-export type CapabilityTechnology = {
-  name: string;
-  icon: CapabilityTechnologyIcon;
-};
-
-export type CapabilityGroup = {
-  title: string;
-  description: string;
-  technologies: CapabilityTechnology[];
-};
-
-export type CapabilitiesContent = {
-  heading: string;
-  description: string;
-  groups: CapabilityGroup[];
-};
+import type { CapabilitiesContent } from "@/data/types/capabilities";
 
 export const capabilitiesContent: CapabilitiesContent = {
   heading: "Core Strengths",
@@ -122,24 +75,3 @@ export const capabilitiesContent: CapabilitiesContent = {
     },
   ],
 };
-
-/** Flat tool list for /about "What I build with" - keep in sync with brand tools above. */
-export const featuredTechStack: CapabilityTechnology[] = [
-  { name: "Next.js", icon: "nextjs" },
-  { name: "React", icon: "react" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "Tailwind CSS", icon: "tailwind" },
-  { name: "ShadCN UI", icon: "shadcn" },
-  { name: "TanStack Query", icon: "tanstackQuery" },
-  { name: "Zustand", icon: "zustand" },
-  { name: "React Hook Form", icon: "reactHookForm" },
-  { name: "Zod", icon: "zod" },
-  { name: "Firebase", icon: "firebase" },
-  { name: "React Native", icon: "reactNative" },
-  { name: "Redux", icon: "redux" },
-  { name: "GraphQL", icon: "graphql" },
-  { name: "Supabase", icon: "supabase" },
-  { name: "Expo", icon: "expo" },
-  { name: "Ionic", icon: "ionic" },
-  { name: "Angular", icon: "angular" },
-];

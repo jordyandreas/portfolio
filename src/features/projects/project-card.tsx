@@ -13,8 +13,9 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import type { Project } from "@/data/projects";
+import type { Project } from "@/data";
 import { ProjectDetailModal } from "@/features/projects/project-detail-modal";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { cn } from "@/lib/utils";
 
 const VISIBLE_TECH_COUNT = 3;
@@ -26,12 +27,14 @@ type ProjectCardProps = {
   project: Project;
   priority?: boolean;
   showPlatformBadge?: boolean;
+  copy: Dictionary["projects"];
 };
 
 export function ProjectCard({
   project,
   priority = false,
   showPlatformBadge = false,
+  copy,
 }: ProjectCardProps) {
   const visibleTechnologies = project.technologies.slice(0, VISIBLE_TECH_COUNT);
   const remainingTechnologies = project.technologies.slice(VISIBLE_TECH_COUNT);
@@ -48,6 +51,7 @@ export function ProjectCard({
         project={project}
         priority={priority}
         showPlatformBadge={showPlatformBadge}
+        copy={copy}
       />
 
       <div className="flex flex-1 flex-col gap-4">
@@ -93,7 +97,7 @@ export function ProjectCard({
                   className="w-auto max-w-72 space-y-2 p-3"
                 >
                   <p className="text-xs font-medium text-muted-foreground">
-                    Also used
+                    {copy.alsoUsed}
                   </p>
                   <ul className="flex flex-wrap items-center gap-2">
                     {remainingTechnologies.map((technology) => (
@@ -126,7 +130,7 @@ export function ProjectCard({
                   rel="noopener noreferrer"
                 >
                   <StackIcon name="github" className="size-4" />
-                  Repository
+                  {copy.repository}
                 </Link>
               </Button>
             ) : null}
@@ -138,7 +142,7 @@ export function ProjectCard({
                   rel="noopener noreferrer"
                 >
                   <Play aria-hidden className="size-4 fill-current" />
-                  Demo
+                  {copy.demo}
                 </Link>
               </Button>
             ) : null}

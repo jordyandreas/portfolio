@@ -6,16 +6,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Button } from "@/components/ui/button";
 import { focusRingClassName } from "@/components/motion/interaction";
 import { motionEase } from "@/components/motion/tokens";
-import { navigationItems } from "@/data/navigation";
+import { siteConfig } from "@/config/site";
+import { getNavigationItems } from "@/data";
+import { getDictionary } from "@/i18n/dictionaries";
+import {
+  getLocaleFromPathname,
+  localizeHref,
+  stripLocale,
+} from "@/i18n/pathname";
 import { cn } from "@/lib/utils";
-
-const contactCta = {
-  label: "Get in Touch",
-  href: "/contact",
-} as const;
 
 function getSectionId(href: string) {
   const [, hash] = href.split("#");
@@ -32,11 +35,18 @@ type NavbarProps = {
 
 export function Navbar({ isFloating = false }: NavbarProps) {
   const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const dictionary = getDictionary(locale);
+  const navigationItems = getNavigationItems(locale);
+  const contactHref = localizeHref("/contact", locale);
+  const homeHref = localizeHref("/", locale);
+  const strippedPathname = stripLocale(pathname);
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const menuId = useId();
   const shouldReduceMotion = useReducedMotion();
-  const isHome = pathname === "/";
+  const isHome = strippedPathname === "/";
 
   useEffect(() => {
     if (!isOpen) {
@@ -103,7 +113,7 @@ export function Navbar({ isFloating = false }: NavbarProps) {
       observer.disconnect();
       window.removeEventListener("hashchange", syncHashSection);
     };
-  }, [isHome]);
+  }, [isHome, navigationItems]);
 
   function closeMenu() {
     setIsOpen(false);
@@ -118,12 +128,14 @@ export function Navbar({ isFloating = false }: NavbarProps) {
   }
 
   function isItemActive(href: string) {
-    if (href === "/") {
+    const strippedHref = stripLocale(href);
+
+    if (strippedHref === "/") {
       return isHome && activeSection === "home";
     }
 
     if (isRouteHref(href)) {
-      return pathname === href;
+      return strippedPathname === strippedHref;
     }
 
     if (!isHome) {
@@ -145,17 +157,17 @@ export function Navbar({ isFloating = false }: NavbarProps) {
     >
       <div className="flex min-h-11 items-center justify-between gap-3 md:gap-4">
         <Link
-          href="/"
+          href={homeHref}
           className={cn(
             "inline-flex shrink-0 items-center rounded-md text-sm font-semibold tracking-tight text-foreground transition-[color,opacity] duration-200 hover:text-foreground/90",
             focusRingClassName,
           )}
-          onClick={() => handleNavSelection("/#home")}
+          onClick={() => handleNavSelection(`${homeHref}#home`)}
         >
-          Jordy Andreas
+          {siteConfig.name}
         </Link>
 
-        <nav aria-label="Primary" className="hidden md:block">
+        <nav aria-label={dictionary.navbar.primaryNav} className="hidden md:block">
           <ul className="flex items-center gap-1">
             {navigationItems.map((item) => {
               const active = isItemActive(item.href);
@@ -198,12 +210,13 @@ export function Navbar({ isFloating = false }: NavbarProps) {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
+          <LanguageSwitcher />
           <Button asChild size="sm" className="group rounded-full px-4">
             <Link
-              href={contactCta.href}
-              onClick={() => handleNavSelection(contactCta.href)}
+              href={contactHref}
+              onClick={() => handleNavSelection(contactHref)}
             >
-              {contactCta.label}
+              {dictionary.navbar.getInTouch}
               <ArrowRight
                 className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
                 aria-hidden="true"
@@ -220,7 +233,9 @@ export function Navbar({ isFloating = false }: NavbarProps) {
           )}
           aria-expanded={isOpen}
           aria-controls={menuId}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-label={
+            isOpen ? dictionary.navbar.closeMenu : dictionary.navbar.openMenu
+          }
           onClick={() => setIsOpen((open) => !open)}
         >
           {isOpen ? (
@@ -235,7 +250,7 @@ export function Navbar({ isFloating = false }: NavbarProps) {
         {isOpen ? (
           <motion.nav
             id={menuId}
-            aria-label="Primary"
+            aria-label={dictionary.navbar.primaryNav}
             className="overflow-hidden md:hidden"
             initial={
               shouldReduceMotion
@@ -276,12 +291,15 @@ export function Navbar({ isFloating = false }: NavbarProps) {
               </ul>
 
               <div className="mt-2 flex flex-col gap-2 border-t border-border pt-2">
+                <div className="flex justify-center py-1">
+                  <LanguageSwitcher />
+                </div>
                 <Button asChild size="sm" className="group w-full justify-center rounded-full">
                   <Link
-                    href={contactCta.href}
-                    onClick={() => handleNavSelection(contactCta.href)}
+                    href={contactHref}
+                    onClick={() => handleNavSelection(contactHref)}
                   >
-                    {contactCta.label}
+                    {dictionary.navbar.getInTouch}
                     <ArrowRight
                       className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
                       aria-hidden="true"

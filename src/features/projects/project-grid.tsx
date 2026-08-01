@@ -1,11 +1,13 @@
-import type { Project } from "@/data/projects";
+import type { Project } from "@/data";
 import { ProjectCard } from "@/features/projects/project-card";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { cn } from "@/lib/utils";
 
 type ProjectGridProps = {
   projects: Project[];
   className?: string;
   showPlatformBadge?: boolean;
+  copy: Dictionary["projects"];
 };
 
 const ABOVE_FOLD_IMAGE_COUNT = 3;
@@ -14,6 +16,7 @@ export function ProjectGrid({
   projects,
   className,
   showPlatformBadge = false,
+  copy,
 }: ProjectGridProps) {
   return (
     <ul
@@ -28,6 +31,7 @@ export function ProjectGrid({
             project={project}
             priority={index < ABOVE_FOLD_IMAGE_COUNT}
             showPlatformBadge={showPlatformBadge}
+            copy={copy}
           />
         </li>
       ))}

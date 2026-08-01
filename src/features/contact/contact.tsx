@@ -4,13 +4,14 @@ import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/motion/fade-in";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
-import { contactContent } from "@/data/contact";
+import { getContactContent } from "@/data";
 import {
   GitHubIcon,
   LinkedInIcon,
   MailIcon,
 } from "@/features/contact/contact-action-icons";
 import { ContactForm } from "@/features/contact/contact-form";
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
 const actionIcons = {
@@ -19,7 +20,13 @@ const actionIcons = {
   github: GitHubIcon,
 } as const;
 
-export function Contact() {
+type ContactProps = {
+  locale: Locale;
+};
+
+export function Contact({ locale }: ContactProps) {
+  const contactContent = getContactContent(locale);
+
   return (
     <section
       id="contact"
@@ -121,7 +128,7 @@ export function Contact() {
 
           <FadeIn delay={0.18}>
             <div className="rounded-[1.75rem] border border-border bg-background/90 p-6 shadow-[0_24px_80px_-48px_rgba(34,34,34,0.28)] backdrop-blur-sm sm:p-8">
-              <ContactForm />
+              <ContactForm locale={locale} />
             </div>
           </FadeIn>
         </Reveal>

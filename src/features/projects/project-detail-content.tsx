@@ -14,28 +14,17 @@ import StackIcon from "tech-stack-icons";
 import { TechnologyLabelIcon } from "@/components/icons/tech-icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { Project, ProjectPlatform, ProjectStatus } from "@/data/projects";
+import type { Project, ProjectPlatform, ProjectStatus } from "@/data";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { cn } from "@/lib/utils";
 
 /** Case-study narrative — keep markup, hide until ready to surface again. */
 const SHOW_CASE_STUDY = false;
 
-const PLATFORM_LABEL: Record<ProjectPlatform, string> = {
-  web: "Web",
-  mobile: "Mobile",
-  backend: "Backend",
-};
-
 const PLATFORM_ICON: Record<ProjectPlatform, LucideIcon> = {
   web: Globe,
   mobile: Smartphone,
   backend: Blocks,
-};
-
-const STATUS_LABEL: Record<ProjectStatus, string> = {
-  completed: "Completed",
-  "in-progress": "In progress",
-  archived: "Archived",
 };
 
 const STATUS_ICON: Record<ProjectStatus, LucideIcon> = {
@@ -46,11 +35,15 @@ const STATUS_ICON: Record<ProjectStatus, LucideIcon> = {
 
 type ProjectDetailContentProps = {
   project: Project;
+  copy: Dictionary["projects"];
 };
 
-export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
-  const platformLabel = PLATFORM_LABEL[project.platform];
-  const statusLabel = STATUS_LABEL[project.status];
+export function ProjectDetailContent({
+  project,
+  copy,
+}: ProjectDetailContentProps) {
+  const platformLabel = copy.platformLabels[project.platform];
+  const statusLabel = copy.statusLabels[project.status];
   const PlatformIcon = PLATFORM_ICON[project.platform];
   const StatusIcon = STATUS_ICON[project.status];
   const hasLinks = Boolean(project.githubUrl || project.liveUrl);
@@ -108,7 +101,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
             id={`${project.id}-overview`}
             className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase"
           >
-            Overview
+            {copy.overview}
           </h4>
           <span
             aria-hidden="true"
@@ -203,7 +196,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
             id={`${project.id}-stack`}
             className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase"
           >
-            Tech stack
+            {copy.techStack}
           </h4>
           <span
             aria-hidden="true"
@@ -240,7 +233,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
                 rel="noopener noreferrer"
               >
                 <StackIcon name="github" className="size-4" />
-                Repository
+                {copy.repository}
               </Link>
             </Button>
           ) : null}
@@ -252,7 +245,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
                 rel="noopener noreferrer"
               >
                 <Play aria-hidden className="size-4 fill-current" />
-                Demo
+                {copy.demo}
               </Link>
             </Button>
           ) : null}

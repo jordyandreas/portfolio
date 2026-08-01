@@ -2,16 +2,19 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
+import { useMemo } from "react";
 import { useForm } from "react-hook-form";
 
 import { focusRingClassName } from "@/components/motion/interaction";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { contactContent } from "@/data/contact";
+import { getContactContent } from "@/data";
 import {
-  contactFormSchema,
+  createContactFormSchema,
   type ContactFormValues,
 } from "@/features/contact/schema";
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { buildWhatsAppHref } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
@@ -28,13 +31,24 @@ const fieldControlClassName = cn(
 
 const fieldErrorClassName = "text-xs text-destructive";
 
-export function ContactForm() {
+type ContactFormProps = {
+  locale: Locale;
+};
+
+export function ContactForm({ locale }: ContactFormProps) {
+  const dictionary = getDictionary(locale);
+  const contactContent = getContactContent(locale);
+  const schema = useMemo(
+    () => createContactFormSchema(dictionary.contact.validation),
+    [dictionary.contact.validation],
+  );
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       name: "",
       email: "",
@@ -44,7 +58,11 @@ export function ContactForm() {
   });
 
   const onSubmit = (values: ContactFormValues) => {
-    const href = buildWhatsAppHref(siteConfig.whatsapp, values);
+    const href = buildWhatsAppHref(
+      siteConfig.whatsapp,
+      values,
+      dictionary.contact.whatsapp,
+    );
     window.open(href, "_blank", "noopener,noreferrer");
   };
 
@@ -55,7 +73,7 @@ export function ContactForm() {
       noValidate
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-5"
-      aria-label="Contact form"
+      aria-label={dictionary.contact.formAria}
     >
       <div className="space-y-2">
         <label htmlFor="contact-name" className={fieldLabelClassName}>

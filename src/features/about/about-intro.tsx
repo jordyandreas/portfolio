@@ -10,8 +10,8 @@ import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { aboutPageContent } from "@/data/about";
-import { heroContent } from "@/data/hero";
+import { getAboutPageContent, getHeroContent } from "@/data";
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
 function SocialIcon({ className, children, ...props }: SVGProps<SVGSVGElement>) {
@@ -44,9 +44,13 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
-export function AboutIntro() {
-  const { heading, paragraphs } = aboutPageContent;
-  const { portrait } = heroContent;
+type AboutIntroProps = {
+  locale: Locale;
+};
+
+export function AboutIntro({ locale }: AboutIntroProps) {
+  const { heading, paragraphs } = getAboutPageContent(locale);
+  const { portrait } = getHeroContent(locale);
 
   return (
     <section aria-labelledby="about-page-heading">

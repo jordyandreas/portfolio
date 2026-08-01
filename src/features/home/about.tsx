@@ -1,9 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
-import {
-  aboutContent,
-  type AboutExpertiseIcon,
-} from "@/data/about";
+import { getAboutContent, type AboutExpertiseIcon } from "@/data";
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 import { Blocks, Globe, Smartphone, type LucideIcon } from "lucide-react";
 
@@ -13,9 +11,13 @@ const expertiseIcons: Record<AboutExpertiseIcon, LucideIcon> = {
   blocks: Blocks,
 };
 
-export function About() {
+type AboutProps = {
+  locale: Locale;
+};
+
+export function About({ locale }: AboutProps) {
   const { heading, paragraphs, stats, expertiseHeading, expertise } =
-    aboutContent;
+    getAboutContent(locale);
 
   return (
     <section id="about" aria-labelledby="about-heading" className="bg-surface">

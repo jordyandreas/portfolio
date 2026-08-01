@@ -3,11 +3,16 @@ import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
-import { contactCtaContent } from "@/data/contact";
+import { getContactCtaContent } from "@/data";
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
-export function ContactCta() {
-  const { headingLines, prompt, ctaLabel, href } = contactCtaContent;
+type ContactCtaProps = {
+  locale: Locale;
+};
+
+export function ContactCta({ locale }: ContactCtaProps) {
+  const { headingLines, prompt, ctaLabel, href } = getContactCtaContent(locale);
 
   return (
     <section id="contact" aria-labelledby="home-contact-heading">

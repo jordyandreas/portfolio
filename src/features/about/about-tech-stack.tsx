@@ -3,11 +3,16 @@ import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { surfaceQuietClassName } from "@/components/motion/interaction";
-import { aboutPageContent } from "@/data/about";
+import { getAboutPageContent } from "@/data";
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
-export function AboutTechStack() {
-  const { techStackHeading, techStack } = aboutPageContent;
+type AboutTechStackProps = {
+  locale: Locale;
+};
+
+export function AboutTechStack({ locale }: AboutTechStackProps) {
+  const { techStackHeading, techStack } = getAboutPageContent(locale);
 
   return (
     <section aria-labelledby="tech-stack-heading">

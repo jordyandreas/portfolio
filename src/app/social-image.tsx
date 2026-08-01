@@ -1,7 +1,14 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import { siteConfig, siteSocialImage, siteTitle } from "@/config/site";
+import {
+  getLocalizedSiteCopy,
+  getSiteTitle,
+  siteConfig,
+  siteSocialImage,
+} from "@/config/site";
+import type { Locale } from "@/i18n/config";
+import { defaultLocale } from "@/i18n/config";
 
 export const socialImageSize = {
   width: siteSocialImage.width,
@@ -20,9 +27,16 @@ export async function getProfileImageDataUrl() {
 
 type RenderSocialImageProps = {
   profileImageSrc: ArrayBuffer;
+  locale?: Locale;
 };
 
-export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
+export function renderSocialImage({
+  profileImageSrc,
+  locale = defaultLocale,
+}: RenderSocialImageProps) {
+  const copy = getLocalizedSiteCopy(locale);
+  const title = getSiteTitle(locale);
+
   return (
     <div
       style={{
@@ -86,7 +100,7 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
                 letterSpacing: "-0.04em",
               }}
             >
-              {siteTitle}
+              {title}
             </div>
             <div
               style={{
@@ -96,7 +110,7 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
                 color: "rgba(255,255,255,0.82)",
               }}
             >
-              {siteConfig.description}
+              {copy.description}
             </div>
           </div>
 
@@ -137,9 +151,10 @@ export function renderSocialImage({ profileImageSrc }: RenderSocialImageProps) {
               background: "rgba(255,255,255,0.06)",
             }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={profileImageSrc as unknown as string}
-              alt={siteConfig.name}
+              alt={copy.socialImageAlt}
               width="280"
               height="406"
               style={{

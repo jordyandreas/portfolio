@@ -2,10 +2,15 @@ import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { CapabilityGroup } from "@/features/home/capability-group";
-import { capabilitiesContent } from "@/data/capabilities";
+import { getCapabilitiesContent } from "@/data";
+import type { Locale } from "@/i18n/config";
 
-export function Capabilities() {
-  const { heading, groups } = capabilitiesContent;
+type CapabilitiesProps = {
+  locale: Locale;
+};
+
+export function Capabilities({ locale }: CapabilitiesProps) {
+  const { heading, groups } = getCapabilitiesContent(locale);
 
   return (
     <section id="skills" aria-labelledby="skills-heading">
