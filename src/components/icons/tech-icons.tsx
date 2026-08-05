@@ -56,6 +56,8 @@ const brandIconNames: Partial<Record<CapabilityTechnologyIcon, IconName>> = {
   expo: "expo",
   supabase: "supabase",
   firebase: "firebase",
+  nodejs: "nodejs",
+  expressjs: "expressjs",
   zod: "zod",
   ionic: "ionic",
   angular: "angular",

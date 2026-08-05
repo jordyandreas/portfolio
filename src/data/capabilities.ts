@@ -25,6 +25,8 @@ export type CapabilityTechnologyIcon =
   | "expo"
   | "supabase"
   | "firebase"
+  | "nodejs"
+  | "expressjs"
   | "zod"
   | "reactHookForm"
   | "ionic"
@@ -87,14 +89,14 @@ export const capabilitiesContent: CapabilitiesContent = {
       ],
     },
     {
-      title: "Realtime & Backend Integration",
+      title: "Backend & Product Integrations",
       description:
-        "Connecting interfaces to live product systems, from realtime media/chat experiences to backend-integrated operational dashboards.",
+        "Shipping auth, data, and realtime backends that product UIs depend on-from Supabase and Firebase to lightweight Node APIs when delivery needs it.",
       technologies: [
         { name: "Firebase", icon: "firebase" },
         { name: "Supabase", icon: "supabase" },
-        { name: "Rendering strategy", icon: "renderingStrategy" },
-        { name: "Core Web Vitals", icon: "coreWebVitals" },
+        { name: "Node.js", icon: "nodejs" },
+        { name: "Express.js", icon: "expressjs" },
       ],
     },
     {
@@ -135,11 +137,13 @@ export const featuredTechStack: CapabilityTechnology[] = [
   { name: "React Hook Form", icon: "reactHookForm" },
   { name: "Zod", icon: "zod" },
   { name: "Firebase", icon: "firebase" },
+  { name: "Supabase", icon: "supabase" },
+  { name: "Node.js", icon: "nodejs" },
+  { name: "Express.js", icon: "expressjs" },
   { name: "React Native", icon: "reactNative" },
   { name: "Redux", icon: "redux" },
   { name: "GraphQL", icon: "graphql" },
   { name: "REST", icon: "rest" },
-  { name: "Supabase", icon: "supabase" },
   { name: "Expo", icon: "expo" },
   { name: "Ionic", icon: "ionic" },
   { name: "Angular", icon: "angular" },

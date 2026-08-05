@@ -19,7 +19,7 @@ export const experienceContent: ExperienceContent = {
       company: "PT. Namea Kreasi Teknologi",
       role: "Senior Frontend Developer",
       period: "August 2023 – Present",
-      location: "Jakarta, Indonesia",
+      location: "Tangerang Selatan, Indonesia",
       outcomes: [
         "Led frontend delivery across product lines with 2 engineers - covering live sports, short-video streaming, video-call systems, and internal ops dashboards on web and mobile.",
         "Improved page load performance by up to 60% by optimizing reusable web and mobile components and scalable UI patterns.",
@@ -78,7 +78,7 @@ export const experienceContent: ExperienceContent = {
       company: "PT. Una Darma Indonesia",
       role: "Mobile Developer",
       period: "November 2021 – July 2022",
-      location: "Jakarta, Indonesia",
+      location: "Tangerang Selatan, Indonesia",
       outcomes: [
         "Deployed Asurisan Dewata and Asurisan Pro platforms serving 4,000+ SMEs nationwide.",
         "Integrated Zakat donation features in collaboration with Neo Bank to expand service reach.",
@@ -97,7 +97,7 @@ export const experienceContent: ExperienceContent = {
       company: "PT. Maybank Indonesia Finance",
       role: "Mobile Developer",
       period: "March 2020 – September 2021",
-      location: "Jakarta, Indonesia",
+      location: "Tangerang Selatan, Indonesia",
       outcomes: [
         "Raised the app rating from 3.0 to 4.5 stars and grew active users by 10,000+.",
         "Reduced operational costs by 70% and cut user wait times by 50% through feature optimization and process automation.",

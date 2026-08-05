@@ -38,8 +38,8 @@ export type AboutPageContent = {
 export const aboutContent: AboutContent = {
   heading: "About Me",
   paragraphs: [
-    "I'm a Senior Frontend Engineer based in Jakarta, building product interfaces that are clear, scalable, and engineered to perform for real-world teams.",
-    "I currently lead frontend delivery across high-traffic web and product platforms, with a focus on performance, maintainable systems, and collaboration that turns complex requirements into polished user experiences.",
+    "I'm a Senior Frontend Engineer based in Tangerang Selatan, building product interfaces that are clear, scalable, and engineered to perform for real-world teams.",
+    "I lead frontend delivery across high-traffic web and product platforms, and when a product needs it, I extend past the interface into APIs, auth, and backend integrations to ship it end to end.",
   ],
   stats: [
     { value: "6+", label: "Years of experience" },
@@ -71,7 +71,7 @@ export const aboutPageContent: AboutPageContent = {
   heading: "Jordy Andreas",
   paragraphs: [
     "I turn complex product requirements into clear, performant interfaces people can rely on. Whether it's shaping web platforms, shipping mobile experiences, or tightening systems under real traffic-I bring structure to the craft.",
-    "Based in Jakarta, I care about maintainable frontend architecture, thoughtful collaboration, and work that still holds up long after launch.",
+    "Based in Tangerang Selatan, I care about maintainable frontend architecture, thoughtful collaboration, and work that still holds up long after launch. When a product needs it, I extend past the interface into APIs, auth, and backend integrations to ship it end to end.",
   ],
   techStackHeading: "What I build with",
   techStack: featuredTechStack,

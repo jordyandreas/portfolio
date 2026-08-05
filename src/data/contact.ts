@@ -46,9 +46,9 @@ export const contactCtaContent: ContactCtaContent = {
 
 export const contactContent: ContactContent = {
   headingLines: ["Tell me what", "you’re building."],
-  lead: "I’m open to new opportunities - freelance projects, product partnerships, and senior frontend roles where craft and ownership matter.",
+  lead: "I’m open to freelance projects, product partnerships, and roles where craft and ownership matter-spanning polished UI and the backend pieces required to ship.",
   points: [
-    "Freelance product UI & frontend systems",
+    "Frontend systems and fullstack product delivery (APIs, auth, integrations)",
     "Full-time or contract opportunities",
     "Clear briefs and thoughtful conversations welcome",
   ],
