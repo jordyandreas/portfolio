@@ -21,7 +21,7 @@ export const experienceContent: ExperienceContent = {
       period: "August 2023 – Present",
       location: "Tangerang Selatan, Indonesia",
       outcomes: [
-        "Led frontend delivery across product lines with 2 engineers - covering live sports, short-video streaming, video-call systems, and internal ops dashboards on web and mobile.",
+        "Led frontend delivery across product lines with 2 engineers - covering video-call systems, internal ops dashboards, and live sports on web and mobile.",
         "Improved page load performance by up to 60% by optimizing reusable web and mobile components and scalable UI patterns.",
         "Established modular frontend architecture across products, including a Turborepo setup with shared UI and auth for Admin, Agency, and Referral dashboards.",
         "Built realtime experiences for talent/host and caller flows using Agora RTC/Chat, WebSocket signaling, and Firebase - from KYC onboarding through live sessions, chat, and earnings/withdrawals.",
