@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist_Mono, Inter } from "next/font/google";
 
 import { AppLayout } from "@/components/layout/app-layout";
@@ -38,6 +39,7 @@ export default function RootLayout({
         />
         <AppLayout>{children}</AppLayout>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

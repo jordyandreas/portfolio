@@ -12,31 +12,26 @@ type ThemeToggleProps = {
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
-  const mounted = resolvedTheme != null;
-  const isDark = resolvedTheme === "dark";
-  const label = isDark ? "Switch to light theme" : "Switch to dark theme";
 
   return (
     <button
       type="button"
-      aria-label={label}
-      disabled={!mounted}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label="Toggle theme"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       className={cn(
-        "inline-flex size-9 items-center justify-center rounded-full border border-transparent bg-transparent text-foreground transition-[background-color,border-color,color,opacity] duration-200 hover:border-border hover:bg-surface disabled:opacity-60",
+        "relative inline-flex size-9 items-center justify-center rounded-full border border-transparent bg-transparent text-foreground transition-[background-color,border-color,color] duration-200 hover:border-border hover:bg-surface",
         focusRingClassName,
         className,
       )}
     >
-      {mounted ? (
-        isDark ? (
-          <Sun className="size-4" aria-hidden="true" />
-        ) : (
-          <Moon className="size-4" aria-hidden="true" />
-        )
-      ) : (
-        <span className="size-4" aria-hidden="true" />
-      )}
+      <Moon
+        aria-hidden="true"
+        className="size-4 rotate-0 scale-100 transition-transform duration-200 dark:-rotate-90 dark:scale-0 motion-reduce:transition-none"
+      />
+      <Sun
+        aria-hidden="true"
+        className="absolute size-4 rotate-90 scale-0 transition-transform duration-200 dark:rotate-0 dark:scale-100 motion-reduce:transition-none"
+      />
     </button>
   );
 }
