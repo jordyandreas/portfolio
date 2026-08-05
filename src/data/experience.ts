@@ -17,7 +17,7 @@ export const experienceContent: ExperienceContent = {
   entries: [
     {
       company: "PT. Namea Kreasi Teknologi",
-      role: "Senior Frontend Developer",
+      role: "Senior Frontend Engineer",
       period: "August 2023 – Present",
       location: "Tangerang Selatan, Indonesia",
       outcomes: [
@@ -41,6 +41,7 @@ export const experienceContent: ExperienceContent = {
         "Turborepo",
         "MUI",
         "NextAuth",
+        "JWT",
         "React Hook Form",
         "Zod",
         "Axios",
