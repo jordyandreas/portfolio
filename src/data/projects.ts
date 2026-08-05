@@ -31,7 +31,7 @@ export const projects: Project[] = [
   {
     id: "live-sport-website",
     slug: "live-sport-website",
-    title: "Live Sport Website",
+    title: "Live Sports Website",
     shortDescription:
       "A live sports website providing real-time match scores and updates under peak traffic.",
     overview:
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     showcaseImages: [
       {
         src: "/projects/live-sport-website/01-cover.webp",
-        alt: "Live Sport Website showcase screenshot 1",
+        alt: "Live Sports Website showcase screenshot 1",
       },
     ],
     order: 4,
@@ -259,7 +259,7 @@ export const projects: Project[] = [
       "Used Supabase as the backend with TanStack Query and Zustand for client state.",
     ],
     githubUrl: "https://github.com/jordyandreas/digica-finance-dashboard",
-    liveUrl: "https://digica-academy.vercel.app",
+    liveUrl: null,
     status: "completed",
     platform: "web",
     showcaseImages: [
