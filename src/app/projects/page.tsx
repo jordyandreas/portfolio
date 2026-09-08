@@ -28,7 +28,12 @@ export default function ProjectsPage() {
             </FadeIn>
 
             <FadeIn delay={0.08}>
-              <ProjectPlatformTabs projects={projects} includeAllTab initialTab="all" />
+              <ProjectPlatformTabs
+                projects={projects}
+                includeAllTab
+                initialTab="all"
+                priorityImageCount={3}
+              />
             </FadeIn>
           </div>
         </Container>

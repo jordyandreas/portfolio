@@ -110,6 +110,7 @@ type ProjectPlatformTabsProps = {
   className?: string;
   includeAllTab?: boolean;
   initialTab?: ProjectTab;
+  priorityImageCount?: number;
 };
 
 export function ProjectPlatformTabs({
@@ -118,6 +119,7 @@ export function ProjectPlatformTabs({
   className,
   includeAllTab = true,
   initialTab = includeAllTab ? "all" : "web",
+  priorityImageCount = 0,
 }: ProjectPlatformTabsProps) {
   const [platform, setPlatform] = useState<ProjectTab>(initialTab);
   const tablistId = useId();
@@ -178,6 +180,7 @@ export function ProjectPlatformTabs({
           <ProjectGrid
             projects={visibleProjects}
             showPlatformBadge={platform === "all"}
+            priorityImageCount={priorityImageCount}
           />
         ) : (
           <div className="rounded-3xl border border-dashed border-border bg-surface/60 px-6 py-16 text-center sm:px-8">

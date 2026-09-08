@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Images, X } from "lucide-react";
 import { createPortal } from "react-dom";
@@ -7,10 +8,24 @@ import { createPortal } from "react-dom";
 import { focusRingClassName } from "@/components/motion/interaction";
 import { Button } from "@/components/ui/button";
 import type { Project, ProjectPlatform } from "@/data/projects";
-import { ProjectDetailContent } from "@/features/projects/project-detail-content";
 import { ProjectImage } from "@/features/projects/project-image";
-import { ProjectShowcaseCarousel } from "@/features/projects/project-showcase-carousel";
 import { cn } from "@/lib/utils";
+
+const ProjectShowcaseCarousel = dynamic(
+  () =>
+    import("@/features/projects/project-showcase-carousel").then(
+      (mod) => mod.ProjectShowcaseCarousel,
+    ),
+  { ssr: false },
+);
+
+const ProjectDetailContent = dynamic(
+  () =>
+    import("@/features/projects/project-detail-content").then(
+      (mod) => mod.ProjectDetailContent,
+    ),
+  { ssr: false },
+);
 
 const PLATFORM_LABEL: Record<ProjectPlatform, string> = {
   web: "Web",

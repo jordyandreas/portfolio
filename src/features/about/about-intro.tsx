@@ -7,7 +7,8 @@ import Link from "next/link";
 import type { SVGProps } from "react";
 
 import { Container } from "@/components/layout/container";
-import { Reveal } from "@/components/motion/reveal";
+import { FadeIn } from "@/components/motion/fade-in";
+import { RiseIn } from "@/components/motion/rise-in";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { aboutPageContent } from "@/data/about";
@@ -51,11 +52,8 @@ export function AboutIntro() {
   return (
     <section aria-labelledby="about-page-heading">
       <Container className="py-8 sm:py-12 md:py-16">
-        <Reveal
-          intensity="medium"
-          className="grid gap-10 lg:grid-cols-[minmax(14rem,0.75fr)_minmax(0,1.25fr)] lg:items-center lg:gap-12"
-        >
-          <div className="mx-auto w-full max-w-[20rem] lg:mx-0 lg:max-w-none">
+        <div className="grid gap-10 lg:grid-cols-[minmax(14rem,0.75fr)_minmax(0,1.25fr)] lg:items-center lg:gap-12">
+          <RiseIn className="mx-auto w-full max-w-[20rem] lg:mx-0 lg:max-w-none">
             <div className="group/portrait relative mx-auto aspect-square w-full">
               <div
                 aria-hidden="true"
@@ -76,9 +74,9 @@ export function AboutIntro() {
                 />
               </div>
             </div>
-          </div>
+          </RiseIn>
 
-          <div className="flex flex-col gap-8 md:gap-10">
+          <FadeIn delay={0.08} className="flex flex-col gap-8 md:gap-10">
             <div className="space-y-6">
               <h1
                 id="about-page-heading"
@@ -161,8 +159,8 @@ export function AboutIntro() {
                 </Link>
               </Button>
             </div>
-          </div>
-        </Reveal>
+          </FadeIn>
+        </div>
       </Container>
     </section>
   );

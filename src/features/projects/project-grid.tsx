@@ -6,14 +6,15 @@ type ProjectGridProps = {
   projects: Project[];
   className?: string;
   showPlatformBadge?: boolean;
+  /** How many leading cover images may use `priority` (0 on pages with a hero LCP). */
+  priorityImageCount?: number;
 };
-
-const ABOVE_FOLD_IMAGE_COUNT = 3;
 
 export function ProjectGrid({
   projects,
   className,
   showPlatformBadge = false,
+  priorityImageCount = 0,
 }: ProjectGridProps) {
   return (
     <ul
@@ -26,7 +27,7 @@ export function ProjectGrid({
         <li key={project.id} className="h-full">
           <ProjectCard
             project={project}
-            priority={index < ABOVE_FOLD_IMAGE_COUNT}
+            priority={index < priorityImageCount}
             showPlatformBadge={showPlatformBadge}
           />
         </li>

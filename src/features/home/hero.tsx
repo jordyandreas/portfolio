@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/motion/fade-in";
+import { RiseIn } from "@/components/motion/rise-in";
 import { heroContent } from "@/data/hero";
 
 export function Hero() {
@@ -50,8 +51,8 @@ export function Hero() {
             </FadeIn>
           </div>
 
-          <FadeIn
-            delay={0.22}
+          <RiseIn
+            delay={0.12}
             className="mx-auto w-full max-w-[26rem] justify-self-center lg:max-w-[28rem] lg:justify-self-end xl:max-w-[32rem]"
           >
             <div className="group/portrait relative mx-auto aspect-square w-full">
@@ -74,7 +75,7 @@ export function Hero() {
                 />
               </div>
             </div>
-          </FadeIn>
+          </RiseIn>
         </div>
       </Container>
     </section>
