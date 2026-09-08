@@ -33,7 +33,7 @@ export const heroContent: HeroContent = {
     external: true,
   },
   portrait: {
-    src: "/profile/jordy-andreas-new.avif",
+    src: "/profile/jordy-andreas-640.jpg",
     alt: "Portrait of Jordy Andreas",
   },
 };

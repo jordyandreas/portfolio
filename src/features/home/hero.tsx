@@ -15,17 +15,21 @@ export function Hero() {
       <Container className="w-full py-8 sm:py-12 md:py-16">
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:gap-16 xl:gap-24">
           <div className="flex max-w-3xl flex-col gap-8 lg:max-w-4xl">
-            <FadeIn className="flex flex-col gap-4">
-              <p className="text-sm font-medium tracking-[0.14em] text-muted-foreground uppercase">
-                {eyebrow}
-              </p>
-              <h1
-                id="hero-heading"
-                className="max-w-4xl text-4xl font-semibold tracking-[-0.045em] text-foreground sm:text-5xl lg:text-6xl"
-              >
-                {headline}
-              </h1>
-            </FadeIn>
+            <div className="flex flex-col gap-4">
+              <FadeIn>
+                <p className="text-sm font-medium tracking-[0.14em] text-muted-foreground uppercase">
+                  {eyebrow}
+                </p>
+              </FadeIn>
+              <RiseIn>
+                <h1
+                  id="hero-heading"
+                  className="max-w-4xl text-4xl font-semibold tracking-[-0.045em] text-foreground sm:text-5xl lg:text-6xl"
+                >
+                  {headline}
+                </h1>
+              </RiseIn>
+            </div>
 
             <FadeIn delay={0.12}>
               <div className="flex flex-wrap gap-3 pt-1">
@@ -52,7 +56,7 @@ export function Hero() {
           </div>
 
           <RiseIn
-            delay={0.12}
+            delay={0.08}
             className="mx-auto w-full max-w-[26rem] justify-self-center lg:max-w-[28rem] lg:justify-self-end xl:max-w-[32rem]"
           >
             <div className="group/portrait relative mx-auto aspect-square w-full">

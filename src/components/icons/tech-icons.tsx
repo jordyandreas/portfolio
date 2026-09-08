@@ -30,38 +30,35 @@ import {
   Video,
   type LucideIcon,
 } from "lucide-react";
-import { useTheme } from "next-themes";
-import StackIcon, { type IconName } from "tech-stack-icons";
 
+import {
+  StackIcon,
+  type StackIconName,
+} from "@/components/icons/stack-icon";
 import type { CapabilityTechnologyIcon } from "@/data/capabilities";
 import { cn } from "@/lib/utils";
 
-function useStackIconVariant(): "light" | "dark" {
-  const { resolvedTheme } = useTheme();
-
-  return resolvedTheme === "dark" ? "dark" : "light";
-}
-
-const brandIconNames: Partial<Record<CapabilityTechnologyIcon, IconName>> = {
-  nextjs: "nextjs2",
-  react: "react",
-  reactNative: "reactnative",
-  typescript: "typescript",
-  tanstackQuery: "reactquery",
-  zustand: "zustand",
-  redux: "redux",
-  graphql: "graphql",
-  tailwind: "tailwindcss",
-  shadcn: "shadcnui",
-  expo: "expo",
-  supabase: "supabase",
-  firebase: "firebase",
-  nodejs: "nodejs",
-  expressjs: "expressjs",
-  zod: "zod",
-  ionic: "ionic",
-  angular: "angular",
-};
+const brandIconNames: Partial<Record<CapabilityTechnologyIcon, StackIconName>> =
+  {
+    nextjs: "nextjs2",
+    react: "react",
+    reactNative: "reactnative",
+    typescript: "typescript",
+    tanstackQuery: "reactquery",
+    zustand: "zustand",
+    redux: "redux",
+    graphql: "graphql",
+    tailwind: "tailwindcss",
+    shadcn: "shadcnui",
+    expo: "expo",
+    supabase: "supabase",
+    firebase: "firebase",
+    nodejs: "nodejs",
+    expressjs: "expressjs",
+    zod: "zod",
+    ionic: "ionic",
+    angular: "angular",
+  };
 
 const lucideTechIcons: Partial<
   Record<CapabilityTechnologyIcon, LucideIcon>
@@ -82,8 +79,8 @@ const lucideTechIcons: Partial<
   reactHookForm: FileInput,
 };
 
-/** Map experience/project technology labels → tech-stack-icons names */
-const technologyLabelToStackIcon: Record<string, IconName> = {
+/** Map experience/project technology labels → stack icon names */
+const technologyLabelToStackIcon: Record<string, StackIconName> = {
   "Next.js": "nextjs2",
   React: "react",
   "React Native": "reactnative",
@@ -118,7 +115,7 @@ const technologyLabelToStackIcon: Record<string, IconName> = {
   "Radix UI": "radixui",
 };
 
-/** Labels without a brand mark in tech-stack-icons */
+/** Labels without a brand mark in the local stack icon set */
 const technologyLabelToLucide: Record<string, LucideIcon> = {
   "REST API": Network,
   Axios: Network,
@@ -150,13 +147,11 @@ export function CapabilityTechIcon({
   className,
 }: CapabilityTechIconProps) {
   const brandName = brandIconNames[name];
-  const variant = useStackIconVariant();
 
   if (brandName) {
     return (
       <StackIcon
         name={brandName}
-        variant={variant}
         className={cn("size-3.5 shrink-0", className)}
       />
     );
@@ -186,13 +181,11 @@ export function TechnologyLabelIcon({
   className,
 }: TechnologyLabelIconProps) {
   const stackName = technologyLabelToStackIcon[label];
-  const variant = useStackIconVariant();
 
   if (stackName) {
     return (
       <StackIcon
         name={stackName}
-        variant={variant}
         className={cn("size-3.5 shrink-0", className)}
       />
     );

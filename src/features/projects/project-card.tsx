@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { Play } from "lucide-react";
-import StackIcon from "tech-stack-icons";
 
+import { StackIcon } from "@/components/icons/stack-icon";
 import { TechnologyLabelIcon } from "@/components/icons/tech-icons";
 import { surfaceLiftClassName } from "@/components/motion/interaction";
 import { Badge, badgeVariants } from "@/components/ui/badge";

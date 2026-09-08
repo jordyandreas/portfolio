@@ -9,9 +9,8 @@ import {
   Smartphone,
   type LucideIcon,
 } from "lucide-react";
-import StackIcon from "tech-stack-icons";
-
 import { TechnologyLabelIcon } from "@/components/icons/tech-icons";
+import { StackIcon } from "@/components/icons/stack-icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Project, ProjectPlatform, ProjectStatus } from "@/data/projects";

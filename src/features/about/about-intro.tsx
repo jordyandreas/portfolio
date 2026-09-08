@@ -76,90 +76,96 @@ export function AboutIntro() {
             </div>
           </RiseIn>
 
-          <FadeIn delay={0.08} className="flex flex-col gap-8 md:gap-10">
+          <div className="flex flex-col gap-8 md:gap-10">
             <div className="space-y-6">
-              <h1
-                id="about-page-heading"
-                className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-              >
-                {heading}
-              </h1>
-              <div className="space-y-5">
-                {paragraphs.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="text-base leading-8 text-muted-foreground sm:text-lg"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              <RiseIn>
+                <h1
+                  id="about-page-heading"
+                  className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+                >
+                  {heading}
+                </h1>
+              </RiseIn>
+              <FadeIn delay={0.08}>
+                <div className="space-y-5">
+                  {paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="text-base leading-8 text-muted-foreground sm:text-lg"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </FadeIn>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              {siteConfig.resume ? (
-                <Button asChild size="sm" className="rounded-full">
+            <FadeIn delay={0.14}>
+              <div className="flex flex-wrap gap-3">
+                {siteConfig.resume ? (
+                  <Button asChild size="sm" className="rounded-full">
+                    <Link
+                      href={siteConfig.resume}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="size-4" aria-hidden />
+                      Download Resume
+                    </Link>
+                  </Button>
+                ) : null}
+
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-border bg-surface"
+                >
                   <Link
-                    href={siteConfig.resume}
+                    href={siteConfig.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`LinkedIn profile for ${siteConfig.name}`}
                   >
-                    <Download className="size-4" aria-hidden />
-                    Download Resume
+                    <LinkedInIcon />
+                    LinkedIn
                   </Link>
                 </Button>
-              ) : null}
 
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="rounded-full border-border bg-surface"
-              >
-                <Link
-                  href={siteConfig.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`LinkedIn profile for ${siteConfig.name}`}
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-border bg-surface"
                 >
-                  <LinkedInIcon />
-                  LinkedIn
-                </Link>
-              </Button>
+                  <Link
+                    href={siteConfig.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`GitHub profile for ${siteConfig.name}`}
+                  >
+                    <GitHubIcon />
+                    GitHub
+                  </Link>
+                </Button>
 
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="rounded-full border-border bg-surface"
-              >
-                <Link
-                  href={siteConfig.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`GitHub profile for ${siteConfig.name}`}
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-border bg-surface"
                 >
-                  <GitHubIcon />
-                  GitHub
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="rounded-full border-border bg-surface"
-              >
-                <Link
-                  href={`mailto:${siteConfig.email}`}
-                  aria-label={`Email ${siteConfig.name}`}
-                >
-                  <Mail className="size-4" aria-hidden />
-                  Email
-                </Link>
-              </Button>
-            </div>
-          </FadeIn>
+                  <Link
+                    href={`mailto:${siteConfig.email}`}
+                    aria-label={`Email ${siteConfig.name}`}
+                  >
+                    <Mail className="size-4" aria-hidden />
+                    Email
+                  </Link>
+                </Button>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </Container>
     </section>
