@@ -25,9 +25,11 @@ export type Project = {
     alt: string;
   }>;
   order: number;
+  /** Kept in source data, omitted from the site until it should be published. */
+  hidden?: boolean;
 };
 
-export const projects: Project[] = [
+const projectCatalog: Project[] = [
   {
     id: "live-sport-website",
     slug: "live-sport-website",
@@ -152,6 +154,7 @@ export const projects: Project[] = [
     liveUrl: "https://digica-academy-lms.vercel.app",
     status: "completed",
     platform: "web",
+    hidden: true,
     showcaseImages: [
       {
         src: "/projects/digica-academy-lms/01-cover.webp",
@@ -172,6 +175,82 @@ export const projects: Project[] = [
       {
         src: "/projects/digica-academy-lms/05-showcase.webp",
         alt: "Digica Academy LMS showcase screenshot 5",
+      },
+    ],
+    order: 6,
+  },
+  {
+    id: "digica-academy",
+    slug: "digica-academy",
+    title: "Digica Academy",
+    shortDescription:
+      "A landing page for Digica Academy's live and upcoming data bootcamps, with instructor profiles and articles.",
+    overview:
+      "Built the public landing page for Digica Academy, where learners browse live and upcoming bootcamps in SQL, data analytics, and data science. The page covers how a cohort works, curriculum tracks, practitioner instructors, alumni stories, and short articles before someone registers.",
+    domain: "EdTech / Bootcamp",
+    role: "Frontend Engineer - Digica Academy landing page",
+    context:
+      "Digica Academy needed a public site for prospective learners to compare ongoing and upcoming bootcamps, meet instructors, and read practical articles.",
+    challenge:
+      "Present several bootcamp tracks, cohort schedules, and supporting stories on one page while keeping registration easy to find.",
+    contribution:
+      "Built the landing sections for programs, curriculum, instructors, alumni, and the academy journal, with clear paths to register.",
+    outcomes: [
+      "Gave learners one page to compare upcoming and live cohorts, including dates, session counts, and pricing.",
+      "Placed practitioner instructors and alumni career stories next to the curriculum.",
+      "Added an articles section for short reads on SQL, analytics, data science, and career prep.",
+    ],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    highlights: [
+      "Built a landing page for Digica Academy's live and upcoming data and tech bootcamps.",
+      "Showcased cohort cards for SQL, data analytics, and data science programs, with schedule and registration.",
+      "Presented curriculum tracks, a four-step learning flow, and practitioner instructor profiles.",
+      "Included alumni stories and an articles journal for prospective learners.",
+    ],
+    githubUrl: "https://github.com/jordyandreas/digica-academy-lms",
+    liveUrl: "https://www.digica-academy.web.id",
+    status: "completed",
+    platform: "web",
+    showcaseImages: [
+      {
+        src: "/projects/digica-academy-lms/01-cover.webp",
+        alt: "Digica Academy hero inviting learners to study data and tech with industry practitioners",
+      },
+      {
+        src: "/projects/digica-academy-lms/02-showcase.webp",
+        alt: "About Digica Academy with alumni hiring logos and program stats",
+      },
+      {
+        src: "/projects/digica-academy-lms/03-showcase.webp",
+        alt: "Upcoming bootcamp cards with cohort dates, session counts, pricing, and registration",
+      },
+      {
+        src: "/projects/digica-academy-lms/04-showcase.webp",
+        alt: "How the bootcamp works, from picking a program to finishing with portfolio proof",
+      },
+      {
+        src: "/projects/digica-academy-lms/05-showcase.webp",
+        alt: "Data Science Bootcamp curriculum grouped into foundations, analysis, machine learning, and capstone",
+      },
+      {
+        src: "/projects/digica-academy-lms/06-showcase.webp",
+        alt: "Learning approach covering projects, mentor feedback, and an industry-driven curriculum",
+      },
+      {
+        src: "/projects/digica-academy-lms/07-showcase.webp",
+        alt: "Digica Academy instructor profiles from data roles at companies such as Gojek, DANA, and Grab",
+      },
+      {
+        src: "/projects/digica-academy-lms/08-showcase.webp",
+        alt: "Alumni stories of bootcamp graduates who moved into data roles",
+      },
+      {
+        src: "/projects/digica-academy-lms/09-showcase.webp",
+        alt: "Academy journal articles on career prep, data science, and analytics",
+      },
+      {
+        src: "/projects/digica-academy-lms/10-showcase.webp",
+        alt: "Closing call to action to view programs or chat on WhatsApp, with the site footer",
       },
     ],
     order: 6,
@@ -438,21 +517,24 @@ export const projects: Project[] = [
     slug: "baby-monitor-dashboard",
     title: "Baby Monitor Dashboard",
     shortDescription:
-      "A pregnancy tracking dashboard for vitamins, Baby Plus sessions, kicks, water intake, and reminders.",
+      "A pregnancy and baby care dashboard for vitamins, kicks, feeding, diapers, sleep, growth, and reminders.",
     overview:
-      "A pregnancy tracking dashboard for vitamins, Baby Plus sessions, kicks, water intake, and reminders - with local-first storage and optional Supabase sync.",
-    domain: "Health / Consumer Wellness",
-    role: "Frontend Engineer - local-first dashboard and optional cloud sync",
+      "A dashboard for pregnancy and newborn care. During pregnancy it tracks vitamins, Baby Plus sessions, kicks, water intake, and reminders, with local-first storage. After birth it keeps a child profile and logs feeding, diaper changes, sleep, and growth for weight, height, and head circumference.",
+    domain: "Health / Pregnancy and Baby Care",
+    role: "Frontend Engineer - local-first pregnancy and baby care dashboard",
     context:
-      "Expecting parents needed a simple dashboard to track daily pregnancy habits with reliable local storage and optional cloud backup.",
+      "Expecting parents needed a simple dashboard for daily pregnancy habits, then a place to keep logging feeding, diapers, sleep, and growth after the baby arrives, with reliable local storage.",
     challenge:
-      "Keep tracking fast and usable offline while still supporting optional Supabase sync and reminders.",
+      "Keep pregnancy tracking fast and usable offline, with reminders, then make frequent baby-care logs just as quick while still showing summaries for today, 7 days, and 30 days.",
     contribution:
-      "Built the dashboard UI and local-first data layer with optional Supabase sync, custom i18n, and web notification/service worker reminders.",
+      "Built the dashboard UI and local-first data layer with custom i18n and reminder support, then extended it with child profiles, activity history, and growth tracking.",
     outcomes: [
       "Delivered a pregnancy tracking experience for vitamins, sessions, kicks, water, and reminders.",
-      "Implemented local-first storage with optional Supabase sync.",
+      "Implemented local-first storage for day-to-day tracking.",
       "Added notification and service worker support for reminder workflows.",
+      "Gave parents a home view of the child's profile, latest measurements, and today's feeding, diaper, and sleep totals.",
+      "Added dedicated logs for breastfeeding, formula, pumping, diaper changes, and day or night sleep.",
+      "Surfaced growth trends for weight, height, and head circumference, including the change since the last measurement.",
     ],
     technologies: [
       "Next.js",
@@ -464,8 +546,10 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Built a pregnancy tracking dashboard with local-first storage.",
-      "Supported optional Supabase sync for cloud backup.",
       "Added reminders via Web Notifications and a Service Worker.",
+      "Built a home dashboard with the child's profile, latest measurements, and today's activity summary.",
+      "Logged feeding, diaper changes, and sleep, with filters and an editable daily history.",
+      "Showed 7-day and 30-day summaries, plus growth changes for weight, height, and head size.",
     ],
     githubUrl: "https://github.com/jordyandreas/monitoring-baby-dashboard",
     liveUrl: "https://monitoring-baby-dashboard.vercel.app",
@@ -491,6 +575,30 @@ export const projects: Project[] = [
       {
         src: "/projects/baby-monitor-dashboard/05-showcase.webp",
         alt: "Baby Monitor Dashboard showcase screenshot 5",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/06-showcase.webp",
+        alt: "Baby Monitor home with child profile, weight and height, and today's feeding, diaper, and sleep totals",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/07-showcase.webp",
+        alt: "Daily activity log filtered across feeding, diaper, and sleep entries",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/08-showcase.webp",
+        alt: "Feeding form for breastfeeding, formula, or pumping, with duration and a 7-day summary",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/09-showcase.webp",
+        alt: "Diaper log for pee, poop, or both, with a 7-day change summary",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/10-showcase.webp",
+        alt: "Sleep log for daytime or nighttime rest, with start and end times",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/11-showcase.webp",
+        alt: "Growth summary for weight, height, and head circumference, with a form to add a new measurement",
       },
     ],
     order: 7,
@@ -755,7 +863,7 @@ export const projects: Project[] = [
       "Supported Qibla compass and digital infaq donation flows in React Native.",
     ],
     githubUrl: null,
-    liveUrl: null,
+    liveUrl: "https://www.masjidqu.com",
     status: "completed",
     platform: "mobile",
     showcaseImages: [
@@ -933,6 +1041,10 @@ export const projects: Project[] = [
     order: 2,
   },
 ];
+
+export const projects: Project[] = projectCatalog.filter(
+  (project) => project.hidden !== true,
+);
 
 export function getProjectsByPlatform(platform: ProjectPlatform): Project[] {
   return projects
