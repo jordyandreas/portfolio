@@ -513,27 +513,25 @@ const projectCatalog: Project[] = [
     order: 1,
   },
   {
-    id: "baby-monitor-dashboard",
-    slug: "baby-monitor-dashboard",
-    title: "Baby Monitor Dashboard",
+    id: "nurtory",
+    slug: "nurtory",
+    title: "Nurtory",
     shortDescription:
-      "A pregnancy and baby care dashboard for vitamins, kicks, feeding, diapers, sleep, growth, and reminders.",
+      "A Nurtory dashboard for pregnancy and early childhood, from vitamins and kicks to feeding, pumping, diapers, and growth.",
     overview:
-      "A dashboard for pregnancy and newborn care. During pregnancy it tracks vitamins, Baby Plus sessions, kicks, water intake, and reminders, with local-first storage. After birth it keeps a child profile and logs feeding, diaper changes, sleep, and growth for weight, height, and head circumference.",
-    domain: "Health / Pregnancy and Baby Care",
-    role: "Frontend Engineer - local-first pregnancy and baby care dashboard",
+      "Nurtory keeps a child's story from pregnancy through the early years. During pregnancy it stores the baby's profile and due date, then tracks daily vitamins, a Baby Plus listening program, kick counts, and water intake. After birth it logs feeding, pumping, diapers, sleep, and growth for weight, height, and head circumference, with extra notes for solids, medicine, toilet training, and milestones.",
+    domain: "Health / Pregnancy and Child Care",
+    role: "Frontend Engineer - Nurtory pregnancy and child-care dashboard",
     context:
-      "Expecting parents needed a simple dashboard for daily pregnancy habits, then a place to keep logging feeding, diapers, sleep, and growth after the baby arrives, with reliable local storage.",
+      "Parents needed one place to follow daily pregnancy habits, then keep logging feeding, pumping, diapers, sleep, and growth after the baby arrives.",
     challenge:
-      "Keep pregnancy tracking fast and usable offline, with reminders, then make frequent baby-care logs just as quick while still showing summaries for today, 7 days, and 30 days.",
+      "Make frequent pregnancy and child-care logs fast to enter while still showing useful summaries for today, the last 7 days, and the last 30 days.",
     contribution:
-      "Built the dashboard UI and local-first data layer with custom i18n and reminder support, then extended it with child profiles, activity history, and growth tracking.",
+      "Built the Nurtory dashboard for pregnancy profiles, vitamin and kick tracking, and child activity history, including feeding, pumping, diapers, sleep, and growth.",
     outcomes: [
-      "Delivered a pregnancy tracking experience for vitamins, sessions, kicks, water, and reminders.",
-      "Implemented local-first storage for day-to-day tracking.",
-      "Added notification and service worker support for reminder workflows.",
-      "Gave parents a home view of the child's profile, latest measurements, and today's feeding, diaper, and sleep totals.",
-      "Added dedicated logs for breastfeeding, formula, pumping, diaper changes, and day or night sleep.",
+      "Gave expecting parents a home for the baby's profile, due date, vitamins, Baby Plus progress, kicks, and water intake.",
+      "Showed a child home with today's feeding, pumping, diaper, and sleep totals next to the latest measurements.",
+      "Added feeding, pumping, and diaper histories with today, 7-day, and 30-day summaries.",
       "Surfaced growth trends for weight, height, and head circumference, including the change since the last measurement.",
     ],
     technologies: [
@@ -545,60 +543,70 @@ const projectCatalog: Project[] = [
       "Supabase",
     ],
     highlights: [
-      "Built a pregnancy tracking dashboard with local-first storage.",
-      "Added reminders via Web Notifications and a Service Worker.",
-      "Built a home dashboard with the child's profile, latest measurements, and today's activity summary.",
-      "Logged feeding, diaper changes, and sleep, with filters and an editable daily history.",
-      "Showed 7-day and 30-day summaries, plus growth changes for weight, height, and head size.",
+      "Built a pregnancy home for the baby's profile, due date, vitamins, Baby Plus, kicks, and water.",
+      "Logged feeding, pumping, diapers, and sleep, with filters and a daily history.",
+      "Showed today, 7-day, and 30-day summaries, plus growth changes for weight, height, and head size.",
     ],
     githubUrl: "https://github.com/jordyandreas/monitoring-baby-dashboard",
-    liveUrl: "https://monitoring-baby-dashboard.vercel.app",
+    liveUrl: "https://nurtory.vercel.app",
     status: "completed",
     platform: "web",
     showcaseImages: [
       {
-        src: "/projects/baby-monitor-dashboard/01-cover.webp",
-        alt: "Baby Monitor Dashboard showcase screenshot 1",
-      },
-      {
         src: "/projects/baby-monitor-dashboard/02-showcase.webp",
-        alt: "Baby Monitor Dashboard showcase screenshot 2",
+        alt: "Nurtory pregnancy home for saving the baby's name, gender, and due date",
       },
       {
         src: "/projects/baby-monitor-dashboard/03-showcase.webp",
-        alt: "Baby Monitor Dashboard showcase screenshot 3",
+        alt: "Nurtory pregnancy dashboard with Baby Plus, vitamins, kicks, and water intake",
       },
       {
         src: "/projects/baby-monitor-dashboard/04-showcase.webp",
-        alt: "Baby Monitor Dashboard showcase screenshot 4",
+        alt: "Nurtory daily vitamin list with today's checklist",
       },
       {
         src: "/projects/baby-monitor-dashboard/05-showcase.webp",
-        alt: "Baby Monitor Dashboard showcase screenshot 5",
+        alt: "Nurtory Baby Plus listening program with overall progress",
       },
       {
         src: "/projects/baby-monitor-dashboard/06-showcase.webp",
-        alt: "Baby Monitor home with child profile, weight and height, and today's feeding, diaper, and sleep totals",
+        alt: "Nurtory water intake log with a daily summary against a 2.1 to 3 liter target",
       },
       {
         src: "/projects/baby-monitor-dashboard/07-showcase.webp",
-        alt: "Daily activity log filtered across feeding, diaper, and sleep entries",
+        alt: "Nurtory kick counter for logging a kick now or adding one manually",
       },
       {
         src: "/projects/baby-monitor-dashboard/08-showcase.webp",
-        alt: "Feeding form for breastfeeding, formula, or pumping, with duration and a 7-day summary",
+        alt: "Nurtory child home with profile, measurements, and today's feeding, pumping, diaper, and sleep totals",
       },
       {
         src: "/projects/baby-monitor-dashboard/09-showcase.webp",
-        alt: "Diaper log for pee, poop, or both, with a 7-day change summary",
+        alt: "Nurtory feeding form for breastfeeding, bottle, or formula, with side and duration",
       },
       {
         src: "/projects/baby-monitor-dashboard/10-showcase.webp",
-        alt: "Sleep log for daytime or nighttime rest, with start and end times",
+        alt: "Nurtory daily activity history filtered across feeding, pumping, diapers, and sleep",
       },
       {
         src: "/projects/baby-monitor-dashboard/11-showcase.webp",
-        alt: "Growth summary for weight, height, and head circumference, with a form to add a new measurement",
+        alt: "Nurtory extra logs for sleep, solids, medicine, toilet training, family meals, and milestones",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/12-showcase.webp",
+        alt: "Nurtory feeding summary with today's totals and a calendar history",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/13-showcase.webp",
+        alt: "Nurtory diaper summary for pee and poop, with a daily history",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/14-showcase.webp",
+        alt: "Nurtory pumping summary with session count and volume",
+      },
+      {
+        src: "/projects/baby-monitor-dashboard/15-showcase.webp",
+        alt: "Nurtory growth summary for weight, height, and head circumference, with a form to add a measurement",
       },
     ],
     order: 7,

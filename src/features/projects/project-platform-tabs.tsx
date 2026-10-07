@@ -22,7 +22,7 @@ const ALL_TAB_ORDER: string[] = [
   "live-sport-website",
   "digica-finance-dashboard",
   "digica-academy",
-  "baby-monitor-dashboard",
+  "nurtory",
   "personal-portfolio-website",
   "ulaman-bali-hotel-website",
   "short-video-streaming-platform",
